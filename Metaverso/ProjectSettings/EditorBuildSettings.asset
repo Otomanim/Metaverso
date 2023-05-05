@@ -9,3 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
+    path: Assets/Scenes/HomeScreen.unity
+    guid: 77431af99c230c5419c5dcb03644810b
+  - enabled: 1
