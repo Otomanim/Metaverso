@@ -2160,6 +2160,7 @@ GameObject:
   - component: {fileID: 3776228732935168720}
   - component: {fileID: 4950552071188601389}
   - component: {fileID: 6443051413235322268}
+  - component: {fileID: -7511090222080351027}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -2243,6 +2244,7 @@ MonoBehaviour:
   - {fileID: 2050472823019518996}
   - {fileID: 3776228732935168720}
   - {fileID: 4950552071188601389}
+  - {fileID: -7511090222080351027}
   SimulationBehaviours: []
 --- !u!143 &3893119843249802404
 CharacterController:
@@ -2324,6 +2326,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b87c77da58fb6468fdcb9de514052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7511090222080351027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185753243788583927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Animator: {fileID: 4472937516481946423}
+  TotalWords: 1
+  SyncSettings: 79
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 000000002b1a167c794069558b7cfd670f5f2b8828a981077af3fe2ef3b09ce077934a0f
+  TriggerHashes: 00000000
 --- !u!1 &7694040366590703238
 GameObject:
   m_ObjectHideFlags: 0

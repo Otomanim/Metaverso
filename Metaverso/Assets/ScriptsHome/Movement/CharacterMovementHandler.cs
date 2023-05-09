@@ -51,6 +51,13 @@ public class CharacterMovementHandler : NetworkBehaviour
 
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
 
+            //Shift
+            if(networkInputData.isShiftHolding)
+            {
+                networkCharacterControllerPrototypeCustom.Run();
+            }else
+                networkCharacterControllerPrototypeCustom.StopRun();
+
             //Jump
             if (networkInputData.isJumpPressed)
                 networkCharacterControllerPrototypeCustom.Jump();

@@ -7,6 +7,7 @@ public class CharacterInputHandler : MonoBehaviour
     Vector2 moveInputVector = Vector2.zero;
     Vector2 viewInputVector = Vector2.zero;
     bool isJumpButtonPressed = false;
+    bool isShiftHolding = false;
 
     //Other components
     CharacterMovementHandler characterMovementHandler;
@@ -35,6 +36,13 @@ public class CharacterInputHandler : MonoBehaviour
         moveInputVector.x = Input.GetAxis("Horizontal");
         moveInputVector.y = Input.GetAxis("Vertical");
 
+        if (Input.GetButton("Fire3"))
+        {
+            isShiftHolding = true;
+        }else
+            isShiftHolding = false;
+
+
         //Jump
         if (Input.GetButtonDown("Jump"))
             isJumpButtonPressed = true;
@@ -50,11 +58,15 @@ public class CharacterInputHandler : MonoBehaviour
         //Move data
         networkInputData.movementInput = moveInputVector;
 
+        //Shift Data
+        networkInputData.isShiftHolding = isShiftHolding;
+
         //Jump data
         networkInputData.isJumpPressed = isJumpButtonPressed;
 
         //Reset variables now that we have read their states
         isJumpButtonPressed = false;
+        
 
         return networkInputData;
     }

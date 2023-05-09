@@ -13,7 +13,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     public float jumpImpulse = 8.0f;
     public float acceleration = 10.0f;
     public float braking = 10.0f;
-    public float maxSpeed = 2.0f;
+    public float maxSpeed = 3.0f;
     public float rotationSpeed = 15.0f;
     public float viewUpDownRotationSpeed = 50.0f;
 
@@ -94,6 +94,20 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
             animator.SetBool("Jump", true);
         }
     }
+
+    public void Run()
+    {
+        maxSpeed = 2.1f;
+        animator.SetBool("Run", true);
+    }
+    
+
+    public void StopRun()
+    {
+        maxSpeed = 2.0f;
+        animator.SetBool("Run", false);
+    }
+    
 
     /// <summary>
     /// Basic implementation of a character controller's movement function based on an intended direction.
