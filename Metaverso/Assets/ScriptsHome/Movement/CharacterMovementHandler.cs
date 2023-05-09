@@ -51,12 +51,33 @@ public class CharacterMovementHandler : NetworkBehaviour
 
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
 
+            if (networkInputData.isFrontHolding)
+                networkCharacterControllerPrototypeCustom.AnimationWalk();
+            else
+                networkCharacterControllerPrototypeCustom.StopAnimationWalk();
+
+            if (networkInputData.isBackHolding)
+                networkCharacterControllerPrototypeCustom.AnimationWalkBack();
+            else
+                networkCharacterControllerPrototypeCustom.StopAnimationWalkBack();
+
+            if (networkInputData.isRightHolding)
+                networkCharacterControllerPrototypeCustom.AnimationRight();
+            else
+                networkCharacterControllerPrototypeCustom.StopAnimationRight();
+
+            if (networkInputData.isLeftHolding)
+                networkCharacterControllerPrototypeCustom.AnimationLeft();
+            else
+                networkCharacterControllerPrototypeCustom.StopAnimationLeft();
+            
+
             //Shift
             if(networkInputData.isShiftHolding)
             {
-                networkCharacterControllerPrototypeCustom.Run();
+                networkCharacterControllerPrototypeCustom.AnimationRun();
             }else
-                networkCharacterControllerPrototypeCustom.StopRun();
+                networkCharacterControllerPrototypeCustom.StopAnimationRun();
 
             //Jump
             if (networkInputData.isJumpPressed)
