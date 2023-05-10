@@ -13,7 +13,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     public float jumpImpulse = 8.0f;
     public float acceleration = 10.0f;
     public float braking = 10.0f;
-    public float maxSpeed = 2.0f;
+    public float maxSpeed = 3.0f;
     public float rotationSpeed = 15.0f;
     public float viewUpDownRotationSpeed = 50.0f;
 
@@ -95,6 +95,49 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         }
     }
 
+    public void AnimationRun()
+    {
+        maxSpeed = 2.1f;
+        animator.SetBool("Run", true);
+    }
+    public void StopAnimationRun()
+    {
+        maxSpeed = 2.0f;
+        animator.SetBool("Run", false);
+    }
+    public void AnimationLeft()
+    {
+        animator.SetBool("WalkLeft", true);
+    }
+    public void AnimationRight()
+    {
+        animator.SetBool("WalkRight", true);
+    }
+    public void StopAnimationLeft()
+    {
+        animator.SetBool("WalkLeft", false);
+    }
+    public void StopAnimationRight()
+    {
+        animator.SetBool("WalkRight", false);
+    }
+    public void AnimationWalk()
+    {
+        animator.SetBool("Walking", true);
+    }
+    public void AnimationWalkBack()
+    {
+        animator.SetBool("WalkBack", true);
+    }
+    public void StopAnimationWalkBack()
+    {
+        animator.SetBool("WalkBack", false);
+    }
+    public void StopAnimationWalk()
+    {
+        animator.SetBool("Walking", false);
+    }
+
     /// <summary>
     /// Basic implementation of a character controller's movement function based on an intended direction.
     /// <param name="direction">Intended movement direction, subject to movement query, acceleration and max speed values.</param>
@@ -122,13 +165,11 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
 
         if (direction == default)
         {
-            horizontalVel = Vector3.Lerp(horizontalVel, default, braking * deltaTime);
-            animator.SetBool("Walking", false);
+            horizontalVel = Vector3.Lerp(horizontalVel, default, braking * deltaTime);     
         }
         else
         {
             horizontalVel = Vector3.ClampMagnitude(horizontalVel + direction * acceleration * deltaTime, maxSpeed);
-            animator.SetBool("Walking", true);
         }
 
         moveVelocity.x = horizontalVel.x;
