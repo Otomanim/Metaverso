@@ -6,7 +6,7 @@ public class Billboard : MonoBehaviour
 {
     Camera cam;
 
-        void Update()
+    void Update()
     {
         if (cam == null)
             cam = FindObjectOfType<Camera>();
