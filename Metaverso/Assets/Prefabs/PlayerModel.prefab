@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 5558815592312332264}
   - component: {fileID: 7318036499160859708}
   - component: {fileID: 799361530530642694}
+  - component: {fileID: 4754082660350841834}
   m_Layer: 5
   m_Name: WorldSpaceCanvas
   m_TagString: Untagged
@@ -818,7 +819,7 @@ RectTransform:
   m_GameObject: {fileID: 2062951329343114292}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8176251246840137747}
@@ -891,6 +892,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4754082660350841834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062951329343114292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49ad0223afc2244f9949f5718e5c55c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2360477457622546724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,7 +2609,7 @@ MonoBehaviour:
     _value: 0
     _inverse: 0
     _hash: -814817977
-  StateHashes: 000000002b1a167c794069558b7cfd670f5f2b8828a981077af3fe2ef3b09ce077934a0f
+  StateHashes: 000000002b1a167c794069558b7cfd670f5f2b8828a981077af3fe2ef3b09ce077934a0fea750adf01b68222b6cb861cac5abcf68f5a6c6a95cb5680
   TriggerHashes: 00000000
 --- !u!1 &7694040366590703238
 GameObject:
