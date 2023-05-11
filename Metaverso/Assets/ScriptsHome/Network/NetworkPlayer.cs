@@ -37,6 +37,8 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             RPC_SetNickName(PlayerPrefs.GetString("PlayerNickname"));
 
             Debug.Log("Spawned local player");
+
+            playerNickNameTM.gameObject.SetActive(false);
         }
         else
         {
@@ -49,6 +51,8 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             audioListener.enabled = false;
 
             Debug.Log("Spawned remote player");
+
+            playerNickNameTM.gameObject.SetActive(true);
         }
 
         //Make it easier to tell which player is which.
