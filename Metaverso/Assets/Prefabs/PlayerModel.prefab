@@ -2561,7 +2561,7 @@ GameObject:
   - component: {fileID: 6127827956290192397}
   m_Layer: 0
   m_Name: PlayerModel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2665,7 +2665,7 @@ CharacterController:
   m_Height: 1.4
   m_Radius: 0.22
   m_SlopeLimit: 45
-  m_StepOffset: 1
+  m_StepOffset: 0.6
   m_SkinWidth: 0.001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.69, z: 0}
