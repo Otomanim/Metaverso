@@ -31,6 +31,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     public Vector3 rotacao;
     public Vector3 posicao;
     private Animator animator;
+    private NetworkMecanimAnimator mecanimAnimator;
 
     /// <summary>
     /// Sets the default teleport interpolation velocity to be the CC's current velocity.
@@ -55,6 +56,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     public override void Spawned()
     {
         animator = GetComponent<Animator>();
+        mecanimAnimator = GetComponent<NetworkMecanimAnimator>();
         base.Spawned();
         CacheController();
 
@@ -102,6 +104,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
 
     public void AnimationRun()
     {
+       
         maxSpeed = 2.1f;
         animator.SetBool("Run", true);
     }
@@ -146,7 +149,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     {
         transform.localPosition = posicao;
         transform.eulerAngles = rotacao;
-        animator.SetBool("Sitting", true);
+        mecanimAnimator.Animator.SetBool("Sitting", true);
         isSit = true;
     }
     public void AnimationSitPuff()
@@ -160,21 +163,21 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         {
             case 1:
                 AnimationSit();
-                animator.SetBool("SittingPose", true);
+                mecanimAnimator.Animator.SetBool("SittingPose", true);
                 break;
             case 2:
                 AnimationSit();
-                animator.SetBool("SitCadeiraGamer", true);
+                mecanimAnimator.Animator.SetBool("SitCadeiraGamer", true);
                 break;
             case 3:
                 AnimationSit();
-                animator.SetBool("SittingPose2", true);
+                mecanimAnimator.Animator.SetBool("SittingPose2", true);
                 break;
             case 4:
-                animator.SetBool("Sitting", false);
-                animator.SetBool("SittingPose", false);
-                animator.SetBool("SitCadeiraGamer", false);
-                animator.SetBool("SittingPose2", false);
+                mecanimAnimator.Animator.SetBool("Sitting", false);
+                mecanimAnimator.Animator.SetBool("SittingPose", false);
+                mecanimAnimator.Animator.SetBool("SitCadeiraGamer", false);
+                mecanimAnimator.Animator.SetBool("SittingPose2", false);
                 isSit = false;
                 break;
         }
