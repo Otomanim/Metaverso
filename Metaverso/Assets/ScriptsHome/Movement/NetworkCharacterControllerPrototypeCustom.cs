@@ -55,7 +55,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     public override void Spawned()
     {
         animator = GetComponent<Animator>();
-        //mecanimAnimator = GetComponent<NetworkMecanimAnimator>();
+        mecanimAnimator = GetComponent<NetworkMecanimAnimator>();
         base.Spawned();
         CacheController();
 
@@ -160,7 +160,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
 
     }
     */
-
+    /*
     public void AnimationSit()
     {
         //transform.localPosition = posicao;
@@ -169,8 +169,9 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         animator.SetBool("Sitting", true);
         isSit = true;
     }
+    */
 
-
+    /*
     public void EscolheAnimation(int animationNumber)
     {
         switch (animationNumber)
@@ -195,7 +196,8 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
                 isSit = false;
                 break;
         }
-    }
+    
+    }*/
     
 
    

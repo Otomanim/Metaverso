@@ -2971,7 +2971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9109497fbd1e9bf4f8de7bc154607822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 4217473154069842650}
   InterpolateErrorCorrection: 1
@@ -3014,6 +3014,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  isInteractive: 0
+  isSit: 0
+  escolheAnimation: 0
 --- !u!114 &6443051413235322268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3038,10 +3041,10 @@ MonoBehaviour:
   m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   Animator: {fileID: 4472937516481946423}
-  TotalWords: 3
-  SyncSettings: 127
+  TotalWords: 1
+  SyncSettings: 79
   FloatAccuracy:
     _value: 0
     _inverse: 0
