@@ -38,7 +38,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
             Debug.Log("Spawned local player");
 
-            playerNickNameTM.gameObject.SetActive(false);
+            playerNickNameTM.enabled = false;
         }
         else
         {
@@ -52,7 +52,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
             Debug.Log("Spawned remote player");
 
-            playerNickNameTM.gameObject.SetActive(true);
+            playerNickNameTM.enabled = true;
         }
 
         //Make it easier to tell which player is which.
