@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using Fusion;
 using UnityEngine;
 
@@ -20,11 +21,15 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     [Networked]
     [HideInInspector]
     public bool IsGrounded { get; set; }
-
+    public bool isInteractive;
+    public bool isSit;
+    
+    public int escolheAnimation;
     [Networked]
     [HideInInspector]
     public Vector3 Velocity { get; set; }
-
+    public Vector3 rotacao;
+    public Vector3 posicao;
     private Animator animator;
 
     /// <summary>
@@ -137,6 +142,46 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     {
         animator.SetBool("Walking", false);
     }
+    public void AnimationSit()
+    {
+        transform.localPosition = posicao;
+        transform.eulerAngles = rotacao;
+        animator.SetBool("Sitting", true);
+        isSit = true;
+    }
+    public void AnimationSitPuff()
+    {
+
+    }
+
+    public void EscolheAnimation(int animationNumber)
+    {
+        switch (animationNumber)
+        {
+            case 1:
+                AnimationSit();
+                animator.SetBool("SittingPose", true);
+                break;
+            case 2:
+                AnimationSit();
+                animator.SetBool("SitCadeiraGamer", true);
+                break;
+            case 3:
+                AnimationSit();
+                animator.SetBool("SittingPose2", true);
+                break;
+            case 4:
+                animator.SetBool("Sitting", false);
+                animator.SetBool("SittingPose", false);
+                animator.SetBool("SitCadeiraGamer", false);
+                animator.SetBool("SittingPose2", false);
+                isSit = false;
+                break;
+        }
+    }
+
+   
+
 
     /// <summary>
     /// Basic implementation of a character controller's movement function based on an intended direction.
@@ -182,8 +227,8 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     }
 
     public void Rotate(float rotationY)
-    {
-        transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
+    {     
+         transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -192,12 +237,44 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         {
             gravity = -1000.0f;
         }
+        if (other.gameObject.CompareTag("cadeiraJardim")){      
+            isInteractive = true;
+            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
+            escolheAnimation = 1;
+        }
+        if (other.gameObject.CompareTag("cadeiraGamer"))
+        {    
+            isInteractive = true;
+            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
+            escolheAnimation = 2;
+        }
+        if (other.gameObject.CompareTag("Puff"))
+        {
+            isInteractive = true;
+            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
+            escolheAnimation = 3;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("escada"))
         {
             gravity = -10.0f;
+        }
+        if (other.gameObject.CompareTag("cadeiraJardim"))
+        {          
+            isInteractive = false;
+        }
+        if (other.gameObject.CompareTag("cadeiraGamer"))
+        {           
+            isInteractive = false;
+        }
+        if (other.gameObject.CompareTag("Puff"))
+        {
+            isInteractive = false;
         }
     }
 }
