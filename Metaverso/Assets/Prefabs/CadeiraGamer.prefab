@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215521539428013528}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 1.9821689, z: -0.6760948}
+  m_LocalPosition: {x: 0, y: 0.67216337, z: -1.4597447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1102270586117734816}
   - component: {fileID: 6859301592654227047}
   - component: {fileID: 1511057505232647348}
+  - component: {fileID: 2023973596112806873}
   m_Layer: 0
   m_Name: CadeiraGamerBancoEBracos
   m_TagString: Untagged
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056572263585425933}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.00025177002, y: 1.6714448, z: 0.11986184}
+  m_LocalPosition: {x: -0.00025177002, y: 0.36143923, z: -0.66378814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,6 +167,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2023973596112806873
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056572263585425933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1718876, y: 0.8035151, z: 0.32249942}
+  m_Center: {x: -0.0214566, y: 0.12973262, z: -1.2401737}
 --- !u!1 &2943390947114431240
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2943390947114431240}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.0015277863, y: 2.0569797, z: -0.7225826}
+  m_LocalPosition: {x: 0.0015277863, y: 0.7469741, z: -1.5062325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2968717664187542031}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.26821518, y: 1.0240054, z: 0.029649973}
+  m_LocalPosition: {x: -0.26821518, y: -0.286, z: -0.754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -358,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5537669639629564233}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.0011081696, y: 0.39028838, z: -0.048611164}
+  m_LocalPosition: {x: -0.0011081696, y: -0.70371705, z: -0.83226115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -442,7 +456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5865450692776231495}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.012237549, y: 0.43785027, z: 0.00044298172}
+  m_LocalPosition: {x: 0.012237549, y: -0.6561554, z: -0.783207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -508,10 +522,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085552408309892449}
-  - component: {fileID: 1756300866989674808}
+  - component: {fileID: -7610657074676771732}
   m_Layer: 0
   m_Name: CadeiraGamer
-  m_TagString: Untagged
+  m_TagString: cadeiraGamer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -524,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6929172500065703517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.413, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -538,7 +552,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1756300866989674808
+--- !u!65 &-7610657074676771732
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -546,11 +560,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6929172500065703517}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6123967, y: 3.2634375, z: 1.9084666}
-  m_Center: {x: -0.025637984, y: 1.6902834, z: -0.10621369}
+  m_Size: {x: 1.8886828, y: 1.958586, z: 1.8698269}
+  m_Center: {x: -0.014333725, y: 0.9953028, z: -0.6255538}
 --- !u!1 &9216764920608116580
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,8 +591,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9216764920608116580}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.0011825562, y: 0.88915616, z: -0.13502812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0011825562, y: -0.328, z: -0.919}
+  m_LocalScale: {x: 1, y: 1, z: 0.58}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1085552408309892449}

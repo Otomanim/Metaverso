@@ -29,11 +29,13 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
 
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
     }
+    
 
     public override void FixedUpdateNetwork()
     {
@@ -43,12 +45,14 @@ public class CharacterMovementHandler : NetworkBehaviour
 
 
             //Rotate the view
-            networkCharacterControllerPrototypeCustom.Rotate(networkInputData.rotationInput);
+            if (!networkCharacterControllerPrototypeCustom.isSit)
+                networkCharacterControllerPrototypeCustom.Rotate(networkInputData.rotationInput);
 
             //Move
             Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
             moveDirection.Normalize();
 
+            if(!networkCharacterControllerPrototypeCustom.isSit)
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
 
             if (networkInputData.isFrontHolding)
@@ -70,7 +74,17 @@ public class CharacterMovementHandler : NetworkBehaviour
                 networkCharacterControllerPrototypeCustom.AnimationLeft();
             else
                 networkCharacterControllerPrototypeCustom.StopAnimationLeft();
+
             
+
+            //InteractKey(E)
+            if (networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive && !networkCharacterControllerPrototypeCustom.isSit)
+            {
+                networkCharacterControllerPrototypeCustom.EscolheAnimation(networkCharacterControllerPrototypeCustom.escolheAnimation);                            
+            }else if(networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive && networkCharacterControllerPrototypeCustom.isSit)
+            {
+                networkCharacterControllerPrototypeCustom.EscolheAnimation(4);  
+            }
 
             //Shift
             if(networkInputData.isShiftHolding)
