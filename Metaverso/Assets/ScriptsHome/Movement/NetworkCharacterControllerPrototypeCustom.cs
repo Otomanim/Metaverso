@@ -21,9 +21,8 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     [Networked]
     [HideInInspector]
     public bool IsGrounded { get; set; }
-    public bool isInteractive;
-    public bool isSit;
-    
+    public bool isInteractive = false;
+    public bool isSit = false;
     public int escolheAnimation;
     [Networked]
     [HideInInspector]
@@ -113,6 +112,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         maxSpeed = 2.0f;
         animator.SetBool("Run", false);
     }
+    /*
     public void AnimationLeft()
     {
         animator.SetBool("WalkLeft", true);
@@ -147,41 +147,45 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     }
     public void AnimationSit()
     {
-        transform.localPosition = posicao;
-        transform.eulerAngles = rotacao;
-        mecanimAnimator.Animator.SetBool("Sitting", true);
+        //transform.localPosition = posicao;
+        //transform.eulerAngles = rotacao;
+        
+        animator.SetBool("Sitting", true);
         isSit = true;
     }
     public void AnimationSitPuff()
     {
 
     }
+    */
 
+    /*
     public void EscolheAnimation(int animationNumber)
     {
         switch (animationNumber)
         {
             case 1:
                 AnimationSit();
-                mecanimAnimator.Animator.SetBool("SittingPose", true);
+                animator.SetBool("SittingPose", true);
                 break;
             case 2:
                 AnimationSit();
-                mecanimAnimator.Animator.SetBool("SitCadeiraGamer", true);
+                animator.SetBool("SitCadeiraGamer", true);
                 break;
             case 3:
                 AnimationSit();
-                mecanimAnimator.Animator.SetBool("SittingPose2", true);
+                animator.SetBool("SittingPose2", true);
                 break;
             case 4:
-                mecanimAnimator.Animator.SetBool("Sitting", false);
-                mecanimAnimator.Animator.SetBool("SittingPose", false);
-                mecanimAnimator.Animator.SetBool("SitCadeiraGamer", false);
-                mecanimAnimator.Animator.SetBool("SittingPose2", false);
+                animator.SetBool("Sitting", false);
+                animator.SetBool("SittingPose", false);
+                animator.SetBool("SitCadeiraGamer", false);
+                animator.SetBool("SittingPose2", false);
                 isSit = false;
                 break;
         }
     }
+    */
 
    
 
@@ -192,6 +196,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     /// </summary>
     public virtual void Move(Vector3 direction)
     {
+        
         var deltaTime = Runner.DeltaTime;
         var previousPos = transform.position;
         var moveVelocity = Velocity;
@@ -227,10 +232,12 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
 
         Velocity = (transform.position - previousPos) * Runner.Simulation.Config.TickRate;
         IsGrounded = Controller.isGrounded;
+        
     }
 
     public void Rotate(float rotationY)
     {     
+        
          transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
     }
 
@@ -280,4 +287,6 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
             isInteractive = false;
         }
     }
+
+    
 }

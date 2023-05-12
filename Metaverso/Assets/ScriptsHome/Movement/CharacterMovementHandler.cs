@@ -14,28 +14,33 @@ public class CharacterMovementHandler : NetworkBehaviour
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     Camera localCamera;
 
+    //public bool isInteractive = false;
+    public bool isSit = false;
+    public int escolheAnimation;
+    private NetworkMecanimAnimator animator;
     private void Awake()
     {
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        animator = GetComponent<NetworkMecanimAnimator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
 
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
     }
-    
+
 
     public override void FixedUpdateNetwork()
     {
@@ -45,59 +50,64 @@ public class CharacterMovementHandler : NetworkBehaviour
 
 
             //Rotate the view
-            if (!networkCharacterControllerPrototypeCustom.isSit)
-                networkCharacterControllerPrototypeCustom.Rotate(networkInputData.rotationInput);
+            if (!isSit)
+            networkCharacterControllerPrototypeCustom.Rotate(networkInputData.rotationInput);
 
             //Move
             Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
             moveDirection.Normalize();
 
-            if(!networkCharacterControllerPrototypeCustom.isSit)
+            if(!isSit)
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
 
             if (networkInputData.isFrontHolding)
-                networkCharacterControllerPrototypeCustom.AnimationWalk();
+                animator.Animator.SetBool("Walking", true);
             else
-                networkCharacterControllerPrototypeCustom.StopAnimationWalk();
+                animator.Animator.SetBool("Walking", false);
 
             if (networkInputData.isBackHolding)
-                networkCharacterControllerPrototypeCustom.AnimationWalkBack();
+                animator.Animator.SetBool("WalkBack", true);
             else
-                networkCharacterControllerPrototypeCustom.StopAnimationWalkBack();
+                animator.Animator.SetBool("WalkBack", false);
 
             if (networkInputData.isRightHolding)
-                networkCharacterControllerPrototypeCustom.AnimationRight();
+                animator.Animator.SetBool("WalkRight", true);
             else
-                networkCharacterControllerPrototypeCustom.StopAnimationRight();
+                animator.Animator.SetBool("WalkRight", false);
 
             if (networkInputData.isLeftHolding)
-                networkCharacterControllerPrototypeCustom.AnimationLeft();
+                animator.Animator.SetBool("WalkLeft", true);
             else
-                networkCharacterControllerPrototypeCustom.StopAnimationLeft();
-
-            
+                animator.Animator.SetBool("WalkLeft", false);
 
             //InteractKey(E)
-            if (networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive && !networkCharacterControllerPrototypeCustom.isSit)
+            if (networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive && !isSit)
             {
-                networkCharacterControllerPrototypeCustom.EscolheAnimation(networkCharacterControllerPrototypeCustom.escolheAnimation);                            
-            }else if(networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive && networkCharacterControllerPrototypeCustom.isSit)
+                transform.localPosition = networkCharacterControllerPrototypeCustom.posicao;
+                transform.eulerAngles = networkCharacterControllerPrototypeCustom.rotacao;
+                EscolheAnimation(networkCharacterControllerPrototypeCustom.escolheAnimation);
+                //networkCharacterControllerPrototypeCustom.EscolheAnimation(networkCharacterControllerPrototypeCustom.escolheAnimation);
+            }
+            else if (networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive)
             {
-                networkCharacterControllerPrototypeCustom.EscolheAnimation(4);  
+                EscolheAnimation(4);
+                //networkCharacterControllerPrototypeCustom.EscolheAnimation(4);
             }
 
+
             //Shift
-            if(networkInputData.isShiftHolding)
+            if (networkInputData.isShiftHolding)
             {
                 networkCharacterControllerPrototypeCustom.AnimationRun();
-            }else
+            }
+            else
                 networkCharacterControllerPrototypeCustom.StopAnimationRun();
 
             //Jump
             if (networkInputData.isJumpPressed)
                 networkCharacterControllerPrototypeCustom.Jump();
 
-            
+
 
             CheckFallRespawn();
 
@@ -113,5 +123,35 @@ public class CharacterMovementHandler : NetworkBehaviour
     public void SetViewInputVector(Vector2 viewInput)
     {
         this.viewInput = viewInput;
+    }
+
+    public void EscolheAnimation(int animationNumber)
+    {
+        switch (animationNumber)
+        {
+            case 1:
+                animator.Animator.SetBool("Sitting", true);
+                isSit = true;
+                animator.Animator.SetBool("SittingPose", true);
+                break;
+            case 2:
+                animator.Animator.SetBool("Sitting", true);
+                isSit = true;
+                animator.Animator.SetBool("SitCadeiraGamer", true);
+                break;
+            case 3:
+                animator.Animator.SetBool("Sitting", true);
+                isSit = true;
+                animator.Animator.SetBool("SittingPose2", true);
+                break;
+            case 4:
+                animator.Animator.SetBool("Sitting", false);
+                animator.Animator.SetBool("SittingPose", false);
+                animator.Animator.SetBool("SitCadeiraGamer", false);
+                animator.Animator.SetBool("SittingPose2", false);
+                isSit = false;
+                break;
+        }
+
     }
 }
