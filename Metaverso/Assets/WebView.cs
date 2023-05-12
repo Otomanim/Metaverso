@@ -120,7 +120,7 @@ public class WebView : NetworkBehaviour
 
                 );
 
-            webViewObject.bitmapRefreshCycle = 1;
+            //webViewObject.bitmapRefreshCycle = 1;
             webViewObject.LoadURL(Url);
             webViewObject.SetMargins(0, 0, 0, 0);
             webViewObject.SetVisibility(true);
