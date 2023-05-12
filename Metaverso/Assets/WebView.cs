@@ -12,9 +12,9 @@ public class WebView : NetworkBehaviour
     public GameObject gameObject;
     public Text status;
     WebViewObject webViewObject;
-    
 
-    private string Url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+
+    private string Url = "https://trello.com/b/zmGOKH3K/manual-de-integra%C3%A7%C3%A3o";
 
 
     IEnumerator Start()
@@ -122,7 +122,7 @@ public class WebView : NetworkBehaviour
 
             webViewObject.bitmapRefreshCycle = 1;
             webViewObject.LoadURL(Url);
-            webViewObject.SetMargins(50, 100, 50, 50);
+            webViewObject.SetMargins(0, 0, 0, 0);
             webViewObject.SetVisibility(true);
 
             Debug.Log("=====Loading video=======");
@@ -180,7 +180,73 @@ public class WebView : NetworkBehaviour
 
         }
 
+        void OnGUI()
+        {
+            var x = 10;
 
+            GUI.enabled = (webViewObject == null) ? false : webViewObject.CanGoBack();
+            if (GUI.Button(new Rect(x, 10, 80, 80), "<"))
+            {
+                webViewObject?.GoBack();
+            }
+            GUI.enabled = true;
+            x += 90;
+
+            GUI.enabled = (webViewObject == null) ? false : webViewObject.CanGoForward();
+            if (GUI.Button(new Rect(x, 10, 80, 80), ">"))
+            {
+                webViewObject?.GoForward();
+            }
+            GUI.enabled = true;
+            x += 90;
+
+            if (GUI.Button(new Rect(x, 10, 80, 80), "r"))
+            {
+                webViewObject?.Reload();
+            }
+            x += 90;
+
+            GUI.TextField(new Rect(x, 10, 180, 80), "" + ((webViewObject == null) ? 0 : webViewObject.Progress()));
+            x += 190;
+
+            if (GUI.Button(new Rect(x, 10, 80, 80), "*"))
+            {
+                var g = GameObject.Find("WebViewObject");
+                if (g != null)
+                {
+                    Destroy(g);
+                }
+                else
+                {
+                    StartCoroutine(Start());
+                }
+            }
+            x += 90;
+
+            if (GUI.Button(new Rect(x, 10, 80, 80), "c"))
+            {
+                webViewObject?.GetCookies(Url);
+            }
+            x += 90;
+
+            if (GUI.Button(new Rect(x, 10, 80, 80), "x"))
+            {
+                webViewObject?.ClearCookies();
+            }
+            x += 90;
+
+            if (GUI.Button(new Rect(x, 10, 80, 80), "D"))
+            {
+                webViewObject?.SetInteractionEnabled(false);
+            }
+            x += 90;
+
+            if (GUI.Button(new Rect(x, 10, 80, 80), "E"))
+            {
+                webViewObject?.SetInteractionEnabled(true);
+            }
+            x += 90;
+        }
 
 
         //webView = gameObject.AddComponent<WebViewObject>();
