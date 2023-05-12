@@ -55,7 +55,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     public override void Spawned()
     {
         animator = GetComponent<Animator>();
-        mecanimAnimator = GetComponent<NetworkMecanimAnimator>();
+        //mecanimAnimator = GetComponent<NetworkMecanimAnimator>();
         base.Spawned();
         CacheController();
 
@@ -73,6 +73,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         }
     }
 
+   
     protected override void CopyFromBufferToEngine()
     {
         // Trick: CC must be disabled before resetting the transform state
@@ -100,7 +101,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
             animator.SetBool("Jump", true);
         }
     }
-
+    /*
     public void AnimationRun()
     {
        
@@ -112,6 +113,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         maxSpeed = 2.0f;
         animator.SetBool("Run", false);
     }
+    */
     /*
     public void AnimationLeft()
     {
@@ -159,7 +161,16 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     }
     */
 
-    /*
+    public void AnimationSit()
+    {
+        //transform.localPosition = posicao;
+        //transform.eulerAngles = rotacao;
+
+        animator.SetBool("Sitting", true);
+        isSit = true;
+    }
+
+
     public void EscolheAnimation(int animationNumber)
     {
         switch (animationNumber)
@@ -185,7 +196,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
                 break;
         }
     }
-    */
+    
 
    
 

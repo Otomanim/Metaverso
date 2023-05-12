@@ -14,7 +14,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     Camera localCamera;
 
-    //public bool isInteractive = false;
+    public bool isInteractive = false;
     public bool isSit = false;
     public int escolheAnimation;
     private NetworkMecanimAnimator animator;
@@ -37,8 +37,10 @@ public class CharacterMovementHandler : NetworkBehaviour
 
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
-
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
+
+        isInteractive = networkCharacterControllerPrototypeCustom.isInteractive;
+        escolheAnimation = networkCharacterControllerPrototypeCustom.escolheAnimation;
     }
 
 
@@ -80,29 +82,36 @@ public class CharacterMovementHandler : NetworkBehaviour
             else
                 animator.Animator.SetBool("WalkLeft", false);
 
-            //InteractKey(E)
-            if (networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive && !isSit)
+            //Shift
+            if (networkInputData.isShiftHolding)
             {
-                transform.localPosition = networkCharacterControllerPrototypeCustom.posicao;
-                transform.eulerAngles = networkCharacterControllerPrototypeCustom.rotacao;
-                EscolheAnimation(networkCharacterControllerPrototypeCustom.escolheAnimation);
+                networkCharacterControllerPrototypeCustom.maxSpeed = 2.1f;
+                animator.Animator.SetBool("Run", true);
+            }
+            else
+            {
+                networkCharacterControllerPrototypeCustom.maxSpeed = 2.0f;
+                animator.Animator.SetBool("Run", false);
+            }
+
+            //InteractKey(E)
+            if (networkInputData.isInteractKeyPressed && isInteractive && !isSit)
+            {
+                networkCharacterControllerPrototypeCustom.transform.position = networkCharacterControllerPrototypeCustom.posicao;
+                networkCharacterControllerPrototypeCustom.transform.eulerAngles = networkCharacterControllerPrototypeCustom.rotacao;
+                //transform.localPosition = networkCharacterControllerPrototypeCustom.posicao;
+                //transform.eulerAngles = networkCharacterControllerPrototypeCustom.rotacao;
+                EscolheAnimation(escolheAnimation);
                 //networkCharacterControllerPrototypeCustom.EscolheAnimation(networkCharacterControllerPrototypeCustom.escolheAnimation);
             }
-            else if (networkInputData.isInteractKeyPressed && networkCharacterControllerPrototypeCustom.isInteractive)
+            else if (networkInputData.isInteractKeyPressed && isInteractive)
             {
                 EscolheAnimation(4);
                 //networkCharacterControllerPrototypeCustom.EscolheAnimation(4);
             }
 
 
-            //Shift
-            if (networkInputData.isShiftHolding)
-            {
-                networkCharacterControllerPrototypeCustom.AnimationRun();
-            }
-            else
-                networkCharacterControllerPrototypeCustom.StopAnimationRun();
-
+            
             //Jump
             if (networkInputData.isJumpPressed)
                 networkCharacterControllerPrototypeCustom.Jump();
