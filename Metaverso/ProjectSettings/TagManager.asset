@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - escada
+  - cadeiraJardim
+  - cadeiraGamer
+  - Puff
   layers:
   - Default
   - TransparentFX

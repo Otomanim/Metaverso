@@ -13,4 +13,5 @@ public struct NetworkInputData : INetworkInput
     public NetworkBool isFrontHolding;
     public NetworkBool isBackHolding;
     public NetworkBool isShiftHolding;
+    public NetworkBool isInteractKeyPressed;
 }

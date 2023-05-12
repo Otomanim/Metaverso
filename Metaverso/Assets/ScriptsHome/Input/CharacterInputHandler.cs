@@ -12,6 +12,7 @@ public class CharacterInputHandler : MonoBehaviour
     bool isBackHolding = false;
     bool isJumpButtonPressed = false;
     bool isShiftHolding = false;
+    bool isInteractKeyPressed = false;
 
     //Other components
     CharacterMovementHandler characterMovementHandler;
@@ -61,7 +62,9 @@ public class CharacterInputHandler : MonoBehaviour
             isRightHolding = false;
 
 
-
+        //Interaction
+        if (Input.GetKeyDown(KeyCode.E))
+            isInteractKeyPressed = true;
 
         //Run
         if (Input.GetButton("Fire3"))
@@ -96,6 +99,10 @@ public class CharacterInputHandler : MonoBehaviour
         networkInputData.isRightHolding = isRightHolding;
         networkInputData.isLeftHolding = isLeftHolding;
 
+        //InteractKey data
+        networkInputData.isInteractKeyPressed = isInteractKeyPressed;
+
+
         //Reset variables now that we have read their states
         isFrontHolding = false;
         isBackHolding = false;
@@ -103,6 +110,7 @@ public class CharacterInputHandler : MonoBehaviour
         isShiftHolding = false;
         isLeftHolding = false;
         isRightHolding = false;
+        isInteractKeyPressed = false;
 
 
         return networkInputData;
