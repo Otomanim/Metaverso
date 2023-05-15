@@ -78,18 +78,17 @@ public class CharacterMovementHandler : NetworkBehaviour
             if (networkInputData.isBackHolding)
                 back = true;
             else
-            back = false;
+                back = false;
 
             if (networkInputData.isRightHolding)
                 right = true;
             else
-            right = false;
-            
+                right = false;
+           
             if (networkInputData.isLeftHolding)
                 left = true;
-                
             else
-            left = false;
+                left = false;
             
             //Shift
             if (networkInputData.isShiftHolding)
@@ -126,8 +125,8 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if(!isSit)
-        isInteractive = false;
+        
+        //isInteractive = false;
     }
     void CheckFallRespawn()
     {
@@ -203,8 +202,8 @@ public class CharacterMovementHandler : NetworkBehaviour
         else
             EscolheAnimation(4);
     }
-    
-    private void OnTriggerStay(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("escada"))
         {
@@ -231,6 +230,11 @@ public class CharacterMovementHandler : NetworkBehaviour
             rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
             escolheAnimation = 3;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isInteractive = false;
     }
     
     
