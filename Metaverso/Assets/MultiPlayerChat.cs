@@ -8,19 +8,14 @@ using System;
 
 public class MultiPlayerChat : NetworkBehaviour
 {
-    private NetworkPlayer networkPlayer;
-
     public Text _message;
     public Text input;
     public TextMeshProUGUI usernameInput;
     public string username = "Default";
 
-    private Text textLegacy;
-
     private void Start()
     {
-        networkPlayer = new NetworkPlayer();
-        username = networkPlayer.username;
+        username = usernameInput.text;
     }
 
     public void CallMessageRPC()
@@ -36,9 +31,4 @@ public class MultiPlayerChat : NetworkBehaviour
 
         _message.text += $"{username}: {message}\n";
     }
-
-    
-
-    
-
 }
