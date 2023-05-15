@@ -27,9 +27,10 @@ public class CharacterMovementHandler : NetworkBehaviour
     public bool interact { get; set; }
     public bool isInteractive = false;
     public bool isSit = false;
+    public Vector3 rotacao;
+    public Vector3 posicao;
     public int escolheAnimation;
     private NetworkMecanimAnimator animator;
-    private Animator animatorPlayer;
     private void Awake()
     {
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
@@ -40,7 +41,6 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animatorPlayer = GetComponent<Animator>();
         animator = GetComponent<NetworkMecanimAnimator>();
     }
 
@@ -52,8 +52,8 @@ public class CharacterMovementHandler : NetworkBehaviour
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
 
-        isInteractive = networkCharacterControllerPrototypeCustom.isInteractive;
-        escolheAnimation = networkCharacterControllerPrototypeCustom.escolheAnimation;
+        //isInteractive = networkCharacterControllerPrototypeCustom.isInteractive;
+        //escolheAnimation = networkCharacterControllerPrototypeCustom.escolheAnimation;
 
         }
 
@@ -78,49 +78,40 @@ public class CharacterMovementHandler : NetworkBehaviour
 
             if (networkInputData.isFrontHolding)
                 front = true;
-            //animator.Animator.SetBool("Walking", true);
             else
                 front = false;
-            //animator.Animator.SetBool("Walking", false);
 
             if (networkInputData.isBackHolding)
                 back = true;
-                //animator.Animator.SetBool("WalkBack", true);
             else
             back = false;
-            //animator.Animator.SetBool("WalkBack", false);
 
             if (networkInputData.isRightHolding)
                 right = true;
-                //animator.Animator.SetBool("WalkRight", true);
             else
             right = false;
-            // animator.Animator.SetBool("WalkRight", false);
-
+            
             if (networkInputData.isLeftHolding)
                 left = true;
-                //animator.Animator.SetBool("WalkLeft", true);
+                
             else
             left = false;
-            //animator.Animator.SetBool("WalkLeft", false);
-
+            
             //Shift
             if (networkInputData.isShiftHolding)
              {
-                shift = true;
-               //animator.Animator.SetBool("Run", true);
+                shift = true;              
              }
                else
              {
                 shift = false;
-                //animator.Animator.SetBool("Run", false);
               }
 
             //InteractKey(E)
             if (networkInputData.isInteractKeyPressed && isInteractive && !isSit)
             {
-                networkCharacterControllerPrototypeCustom.transform.position = networkCharacterControllerPrototypeCustom.posicao;
-                networkCharacterControllerPrototypeCustom.transform.eulerAngles = networkCharacterControllerPrototypeCustom.rotacao;
+                networkCharacterControllerPrototypeCustom.transform.position = posicao;
+                networkCharacterControllerPrototypeCustom.transform.eulerAngles = rotacao;
                 interact = true;
                 //EscolheAnimation(escolheAnimation);
             }
@@ -129,18 +120,12 @@ public class CharacterMovementHandler : NetworkBehaviour
                 interact = false;
                 EscolheAnimation(4);
             }
-
-
-            
+          
             //Jump
             if (networkInputData.isJumpPressed)
                 networkCharacterControllerPrototypeCustom.Jump();
 
-
-
             CheckFallRespawn();
-
-
         }
     }
 
@@ -219,5 +204,52 @@ public class CharacterMovementHandler : NetworkBehaviour
             EscolheAnimation(4);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("escada"))
+        {
+            networkCharacterControllerPrototypeCustom.gravity = -1000.0f;
+        }
+        if (other.gameObject.CompareTag("cadeiraJardim"))
+        {
+            isInteractive = true;
+            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
+            escolheAnimation = 1;
+        }
+        if (other.gameObject.CompareTag("cadeiraGamer"))
+        {
+            isInteractive = true;
+            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
+            escolheAnimation = 2;
+        }
+        if (other.gameObject.CompareTag("Puff"))
+        {
+            isInteractive = true;
+            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
+            escolheAnimation = 3;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("escada"))
+        {
+            networkCharacterControllerPrototypeCustom.gravity = -10.0f;
+        }
+        if (other.gameObject.CompareTag("cadeiraJardim"))
+        {
+            isInteractive = false;
+        }
+        if (other.gameObject.CompareTag("cadeiraGamer"))
+        {
+            isInteractive = false;
+        }
+        if (other.gameObject.CompareTag("Puff"))
+        {
+            isInteractive = false;
+        }
+    }
 
 }

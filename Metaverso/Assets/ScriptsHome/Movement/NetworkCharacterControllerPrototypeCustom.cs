@@ -254,6 +254,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
          transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("escada"))
@@ -301,5 +302,5 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
         }
     }
 
-    
+    */
 }
