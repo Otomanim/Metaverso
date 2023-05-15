@@ -15,10 +15,7 @@ public class ControleVolume : MonoBehaviour
             ClickButton();
 
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("===== click ======");
-        }
+        
     }
     public void ClickButton()
     {
@@ -28,12 +25,12 @@ public class ControleVolume : MonoBehaviour
         if (slider)
         {
             sliderVolume.SetActive(true);
-            Debug.Log("======= active========");
+            Debug.Log("======= active Slider ========");
         }
         else
         {
             sliderVolume.SetActive(false);
-            Debug.Log("======== inative==========");
+            Debug.Log("======== inative Slider ==========");
         }
     }
 }
