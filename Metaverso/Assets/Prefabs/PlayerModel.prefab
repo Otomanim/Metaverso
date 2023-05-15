@@ -2989,9 +2989,9 @@ MonoBehaviour:
   TargetInterpolationDelay: 0.03
   gravity: -10
   jumpImpulse: 7
-  acceleration: 20
-  braking: 10
-  maxSpeed: 4
+  acceleration: 15
+  braking: 20
+  maxSpeed: 3
   rotationSpeed: 120
   viewUpDownRotationSpeed: 80
   _IsGrounded: 0
@@ -3014,6 +3014,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  front: 0
+  back: 0
+  right: 0
+  left: 0
+  shift: 0
+  interact: 0
   isInteractive: 0
   isSit: 0
   escolheAnimation: 0

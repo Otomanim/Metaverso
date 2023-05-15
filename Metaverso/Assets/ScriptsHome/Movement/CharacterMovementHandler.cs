@@ -13,7 +13,18 @@ public class CharacterMovementHandler : NetworkBehaviour
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     Camera localCamera;
-
+    [Networked]
+    public bool front { get; set; }
+    [Networked]
+    public bool back { get; set; }
+    [Networked]
+    public bool right { get; set; }
+    [Networked]
+    public bool left { get; set; }
+    [Networked]
+    public bool shift { get; set; }
+    [Networked]
+    public bool interact { get; set; }
     public bool isInteractive = false;
     public bool isSit = false;
     public int escolheAnimation;
@@ -66,46 +77,57 @@ public class CharacterMovementHandler : NetworkBehaviour
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
 
             if (networkInputData.isFrontHolding)
-                animator.Animator.SetBool("Walking", true);
+                front = true;
+            //animator.Animator.SetBool("Walking", true);
             else
-                animator.Animator.SetBool("Walking", false);
+                front = false;
+            //animator.Animator.SetBool("Walking", false);
 
             if (networkInputData.isBackHolding)
-                animator.Animator.SetBool("WalkBack", true);
+                back = true;
+                //animator.Animator.SetBool("WalkBack", true);
             else
-                animator.Animator.SetBool("WalkBack", false);
+            back = false;
+            //animator.Animator.SetBool("WalkBack", false);
 
             if (networkInputData.isRightHolding)
-                animator.Animator.SetBool("WalkRight", true);
+                right = true;
+                //animator.Animator.SetBool("WalkRight", true);
             else
-                animator.Animator.SetBool("WalkRight", false);
+            right = false;
+            // animator.Animator.SetBool("WalkRight", false);
 
             if (networkInputData.isLeftHolding)
-                animator.Animator.SetBool("WalkLeft", true);
+                left = true;
+                //animator.Animator.SetBool("WalkLeft", true);
             else
-                animator.Animator.SetBool("WalkLeft", false);
+            left = false;
+            //animator.Animator.SetBool("WalkLeft", false);
 
             //Shift
             if (networkInputData.isShiftHolding)
-            {
-                animator.Animator.SetBool("Run", true);
-            }
-            else
-            {
-                animator.Animator.SetBool("Run", false);
-            }
+             {
+                shift = true;
+               //animator.Animator.SetBool("Run", true);
+             }
+               else
+             {
+                shift = false;
+                //animator.Animator.SetBool("Run", false);
+              }
 
             //InteractKey(E)
-            if (networkInputData.isInteractKeyPressed && !isInteractive && isSit)
-            {
-                EscolheAnimation(4);
-                
-            }
-            else if (networkInputData.isInteractKeyPressed && isInteractive)
+            if (networkInputData.isInteractKeyPressed && isInteractive && !isSit)
             {
                 networkCharacterControllerPrototypeCustom.transform.position = networkCharacterControllerPrototypeCustom.posicao;
                 networkCharacterControllerPrototypeCustom.transform.eulerAngles = networkCharacterControllerPrototypeCustom.rotacao;
-                EscolheAnimation(escolheAnimation);
+                interact = true;
+                //EscolheAnimation(escolheAnimation);
+            }
+            else if (networkInputData.isInteractKeyPressed && isInteractive)
+            {
+                interact = false;
+                EscolheAnimation(4);
             }
 
 
@@ -166,5 +188,36 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     }
 
-    
+    public override void Render()
+    {
+        if(front)
+            animator.Animator.SetBool("Walking", true);
+        else
+            animator.Animator.SetBool("Walking", false);
+
+        if(back)
+            animator.Animator.SetBool("WalkBack", true);
+        else
+            animator.Animator.SetBool("WalkBack", false);
+
+        if(right)
+            animator.Animator.SetBool("WalkRight", true);
+        else
+            animator.Animator.SetBool("WalkRight", false);
+        if(left)
+            animator.Animator.SetBool("WalkLeft", true);
+        else
+            animator.Animator.SetBool("WalkLeft", false);
+        if(shift)
+            animator.Animator.SetBool("Run", true);
+        else
+            animator.Animator.SetBool("Run", false);
+
+        if (interact)
+            EscolheAnimation(escolheAnimation);
+        else
+            EscolheAnimation(4);
+    }
+
+
 }
