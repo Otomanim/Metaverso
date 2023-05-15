@@ -15,10 +15,6 @@ public class ButtonChat : MonoBehaviour
             ClickButtonChat();
 
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("===== click ======");
-        }
     }
     //funcao de habilitar e desabilitar o chat no canvas
     public void ClickButtonChat()
@@ -28,12 +24,12 @@ public class ButtonChat : MonoBehaviour
         if (painelChat)
         {
             chatPanel.SetActive(true);
-            Debug.Log("======= active========");
+            Debug.Log("======= active Chat ========");
         }
         else
         {
             chatPanel.SetActive(false);
-            Debug.Log("======== inative==========");
+            Debug.Log("======== inative Chat ==========");
         }
     }
 }
