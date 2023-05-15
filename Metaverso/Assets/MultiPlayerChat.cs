@@ -8,12 +8,12 @@ using System;
 
 public class MultiPlayerChat : NetworkBehaviour
 {
-    public TextMeshProUGUI _message;
-    public TextMeshProUGUI input;
-    public TextMeshProUGUI usernameInput;
-    //public string username = "Default";
+    public Text _message;
+    public Text input;
+    public Text usernameInput;
+    public string username = "Default";
 
-    public NetworkString<_16> username { get; set; }
+    
 
 
     private void Start()
@@ -25,11 +25,6 @@ public class MultiPlayerChat : NetworkBehaviour
     {
         string message = input.text;
         RPC_SendMessage(username, message);
-    }
-
-    private void RPC_SendMessage(NetworkString<_16> username, string message)
-    {
-        throw new NotImplementedException();
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
