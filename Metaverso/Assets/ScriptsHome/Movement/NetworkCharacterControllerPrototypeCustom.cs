@@ -21,9 +21,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     [Networked]
     [HideInInspector]
     public bool IsGrounded { get; set; }
-    public bool isInteractive = false;
-    public bool isSit = false;
-    public int escolheAnimation;
+ 
     [Networked]
     [HideInInspector]
     public Vector3 Velocity { get; set; }
@@ -101,108 +99,6 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
             animator.SetBool("Jump", true);
         }
     }
-    /*
-    public void AnimationRun()
-    {
-       
-        maxSpeed = 2.1f;
-        animator.SetBool("Run", true);
-    }
-    public void StopAnimationRun()
-    {
-        maxSpeed = 2.0f;
-        animator.SetBool("Run", false);
-    }
-    */
-    /*
-    public void AnimationLeft()
-    {
-        animator.SetBool("WalkLeft", true);
-    }
-    public void AnimationRight()
-    {
-        animator.SetBool("WalkRight", true);
-    }
-    public void StopAnimationLeft()
-    {
-        animator.SetBool("WalkLeft", false);
-    }
-    public void StopAnimationRight()
-    {
-        animator.SetBool("WalkRight", false);
-    }
-    public void AnimationWalk()
-    {
-        animator.SetBool("Walking", true);
-    }
-    public void AnimationWalkBack()
-    {
-        animator.SetBool("WalkBack", true);
-    }
-    public void StopAnimationWalkBack()
-    {
-        animator.SetBool("WalkBack", false);
-    }
-    public void StopAnimationWalk()
-    {
-        animator.SetBool("Walking", false);
-    }
-    public void AnimationSit()
-    {
-        //transform.localPosition = posicao;
-        //transform.eulerAngles = rotacao;
-        
-        animator.SetBool("Sitting", true);
-        isSit = true;
-    }
-    public void AnimationSitPuff()
-    {
-
-    }
-    */
-    /*
-    public void AnimationSit()
-    {
-        //transform.localPosition = posicao;
-        //transform.eulerAngles = rotacao;
-
-        animator.SetBool("Sitting", true);
-        isSit = true;
-    }
-    */
-
-    /*
-    public void EscolheAnimation(int animationNumber)
-    {
-        switch (animationNumber)
-        {
-            case 1:
-                AnimationSit();
-                animator.SetBool("SittingPose", true);
-                break;
-            case 2:
-                AnimationSit();
-                animator.SetBool("SitCadeiraGamer", true);
-                break;
-            case 3:
-                AnimationSit();
-                animator.SetBool("SittingPose2", true);
-                break;
-            case 4:
-                animator.SetBool("Sitting", false);
-                animator.SetBool("SittingPose", false);
-                animator.SetBool("SitCadeiraGamer", false);
-                animator.SetBool("SittingPose2", false);
-                isSit = false;
-                break;
-        }
-    
-    }*/
-    
-
-   
-
-
     /// <summary>
     /// Basic implementation of a character controller's movement function based on an intended direction.
     /// <param name="direction">Intended movement direction, subject to movement query, acceleration and max speed values.</param>
@@ -250,57 +146,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
 
     public void Rotate(float rotationY)
     {     
-        
          transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
     }
 
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("escada"))
-        {
-            gravity = -1000.0f;
-        }
-        if (other.gameObject.CompareTag("cadeiraJardim")){      
-            isInteractive = true;
-            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
-            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
-            escolheAnimation = 1;
-        }
-        if (other.gameObject.CompareTag("cadeiraGamer"))
-        {    
-            isInteractive = true;
-            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
-            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
-            escolheAnimation = 2;
-        }
-        if (other.gameObject.CompareTag("Puff"))
-        {
-            isInteractive = true;
-            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
-            rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
-            escolheAnimation = 3;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("escada"))
-        {
-            gravity = -10.0f;
-        }
-        if (other.gameObject.CompareTag("cadeiraJardim"))
-        {          
-            isInteractive = false;
-        }
-        if (other.gameObject.CompareTag("cadeiraGamer"))
-        {           
-            isInteractive = false;
-        }
-        if (other.gameObject.CompareTag("Puff"))
-        {
-            isInteractive = false;
-        }
-    }
-
-    */
 }

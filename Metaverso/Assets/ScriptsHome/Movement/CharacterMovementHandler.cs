@@ -35,7 +35,6 @@ public class CharacterMovementHandler : NetworkBehaviour
     {
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
-
     }
 
     // Start is called before the first frame update
@@ -47,14 +46,9 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
-
-        //isInteractive = networkCharacterControllerPrototypeCustom.isInteractive;
-        //escolheAnimation = networkCharacterControllerPrototypeCustom.escolheAnimation;
-
         }
 
 
@@ -73,9 +67,9 @@ public class CharacterMovementHandler : NetworkBehaviour
             Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
             moveDirection.Normalize();
 
-            if(!isSit)
+            if (!isSit) { 
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
-
+            }
             if (networkInputData.isFrontHolding)
                 front = true;
             else
@@ -117,6 +111,7 @@ public class CharacterMovementHandler : NetworkBehaviour
             }
             else if (networkInputData.isInteractKeyPressed && isInteractive)
             {
+                
                 interact = false;
                 EscolheAnimation(4);
             }
@@ -129,6 +124,10 @@ public class CharacterMovementHandler : NetworkBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        isInteractive = false;
+    }
     void CheckFallRespawn()
     {
         if (transform.position.y < -12)
@@ -203,8 +202,8 @@ public class CharacterMovementHandler : NetworkBehaviour
         else
             EscolheAnimation(4);
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("escada"))
         {
@@ -232,24 +231,7 @@ public class CharacterMovementHandler : NetworkBehaviour
             escolheAnimation = 3;
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("escada"))
-        {
-            networkCharacterControllerPrototypeCustom.gravity = -10.0f;
-        }
-        if (other.gameObject.CompareTag("cadeiraJardim"))
-        {
-            isInteractive = false;
-        }
-        if (other.gameObject.CompareTag("cadeiraGamer"))
-        {
-            isInteractive = false;
-        }
-        if (other.gameObject.CompareTag("Puff"))
-        {
-            isInteractive = false;
-        }
-    }
+    
+    
 
 }

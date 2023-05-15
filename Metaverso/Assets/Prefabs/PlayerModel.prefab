@@ -3014,14 +3014,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  front: 0
-  back: 0
-  right: 0
-  left: 0
-  shift: 0
-  interact: 0
+  _front: 0
+  _back: 0
+  _right: 0
+  _left: 0
+  _shift: 0
+  _interact: 0
   isInteractive: 0
   isSit: 0
+  rotacao: {x: 0, y: 0, z: 0}
+  posicao: {x: 0, y: 0, z: 0}
   escolheAnimation: 0
 --- !u!114 &6443051413235322268
 MonoBehaviour:
