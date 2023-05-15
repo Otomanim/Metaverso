@@ -10,11 +10,8 @@ public class MultiPlayerChat : NetworkBehaviour
 {
     public Text _message;
     public Text input;
-    public Text usernameInput;
+    public TextMeshProUGUI usernameInput;
     public string username = "Default";
-
-    
-
 
     private void Start()
     {
