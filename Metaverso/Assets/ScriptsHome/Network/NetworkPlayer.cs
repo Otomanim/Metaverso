@@ -12,6 +12,8 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
     public Transform playerModel;
 
+    public string username;
+
     [Networked(OnChanged = nameof(OnNickNameChanged))]
     public NetworkString<_16> nickName { get; set; }
 
@@ -40,6 +42,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             Debug.Log("Spawned local player");
 
             playerNickNameTM.enabled = false;
+            username = nickName.ToString();
         }
         else
         {
