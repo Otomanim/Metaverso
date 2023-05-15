@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Fusion;
 
 public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
@@ -50,6 +51,9 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             AudioListener audioListener = GetComponentInChildren<AudioListener>();
             audioListener.enabled = false;
 
+            EventSystem eventSystem = GetComponentInChildren<EventSystem>();
+            eventSystem.enabled = false;
+            
             Debug.Log("Spawned remote player");
 
             playerNickNameTM.enabled = true;
