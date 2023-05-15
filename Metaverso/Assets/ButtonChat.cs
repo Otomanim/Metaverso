@@ -10,11 +10,7 @@ public class ButtonChat : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            ClickButtonChat();
-
-        }
+        
     }
     //funcao de habilitar e desabilitar o chat no canvas
     public void ClickButtonChat()

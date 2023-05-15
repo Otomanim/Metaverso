@@ -11,11 +11,7 @@ public class MenuButton : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            ClickButton();
-
-        }
+        
         
     }
     public void ClickButton()

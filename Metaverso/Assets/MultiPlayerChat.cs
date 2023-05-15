@@ -25,7 +25,6 @@ public class MultiPlayerChat : NetworkBehaviour
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-
     public void RPC_SendMessage(string username, string message, RpcInfo rpcInfo = default)
     {
 

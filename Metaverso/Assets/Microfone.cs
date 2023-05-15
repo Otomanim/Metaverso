@@ -16,10 +16,7 @@ public class Microfone : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            ClickButton();
-        }
+        
     }
 
     public void ClickButton()

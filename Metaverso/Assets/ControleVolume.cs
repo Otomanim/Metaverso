@@ -10,11 +10,7 @@ public class ControleVolume : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ClickButton();
-
-        }
+        
         
     }
     public void ClickButton()
