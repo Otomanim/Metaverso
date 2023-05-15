@@ -3740,7 +3740,7 @@ MonoBehaviour:
   input: {fileID: 4964282158490276191}
   usernameInput: {fileID: 3851976809093283346}
   username: Default
-  chatPanel: {fileID: 0}
+  chatPanel: {fileID: 5818946039468997871}
 --- !u!1 &4731265092030937150
 GameObject:
   m_ObjectHideFlags: 0
