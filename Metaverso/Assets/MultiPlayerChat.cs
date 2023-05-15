@@ -7,8 +7,8 @@ using Fusion;
 
 public class MultiPlayerChat : NetworkBehaviour
 {
-    public Text _message;
-    public Text input;
+    public TextMeshProUGUI _message;
+    public TextMeshProUGUI input;
     public TextMeshProUGUI usernameInput;
     public string username = "Default";
 
