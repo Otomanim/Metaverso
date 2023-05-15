@@ -126,6 +126,7 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if(!isSit)
         isInteractive = false;
     }
     void CheckFallRespawn()
