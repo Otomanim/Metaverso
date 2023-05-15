@@ -11,45 +11,10 @@ public class MultiPlayerChat : NetworkBehaviour
     public Text input;
     public TextMeshProUGUI usernameInput;
     public string username = "Default";
-    
-    public GameObject chatPanel;
-    
-    private bool painelChat = false;
 
     private void Start()
     {
         username = usernameInput.text;
-    }
-
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            ClickButtonChat();
-
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("===== click ======");
-        }
-    }
-    //funcao de habilitar e desabilitar o chat no canvas
-    public void ClickButtonChat()
-    {
-        painelChat = !painelChat;
-
-        if (painelChat)
-        {
-            chatPanel.SetActive(true);
-            Debug.Log("======= active========");
-        }
-        else
-        {
-            chatPanel.SetActive(false);
-            Debug.Log("======== inative==========");
-        }
     }
 
     public void CallMessageRPC()

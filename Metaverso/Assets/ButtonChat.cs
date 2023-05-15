@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControleVolume : MonoBehaviour
+public class ButtonChat : MonoBehaviour
 {
-    public GameObject sliderVolume;
+    public GameObject chatPanel;
 
-    private bool slider = false;
+    private bool painelChat = false;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            ClickButton();
+            ClickButtonChat();
 
         }
         if (Input.GetMouseButtonDown(0))
@@ -20,19 +20,19 @@ public class ControleVolume : MonoBehaviour
             Debug.Log("===== click ======");
         }
     }
-    public void ClickButton()
+    //funcao de habilitar e desabilitar o chat no canvas
+    public void ClickButtonChat()
     {
+        painelChat = !painelChat;
 
-        slider = !slider;
-
-        if (slider)
+        if (painelChat)
         {
-            sliderVolume.SetActive(true);
+            chatPanel.SetActive(true);
             Debug.Log("======= active========");
         }
         else
         {
-            sliderVolume.SetActive(false);
+            chatPanel.SetActive(false);
             Debug.Log("======== inative==========");
         }
     }

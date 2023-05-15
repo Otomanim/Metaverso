@@ -3601,6 +3601,7 @@ GameObject:
   - component: {fileID: 7617150615108494743}
   - component: {fileID: 2716959100399147265}
   - component: {fileID: 3878006432641693275}
+  - component: {fileID: 2798890668343484273}
   m_Layer: 0
   m_Name: Chat
   m_TagString: Untagged
@@ -3711,8 +3712,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Chat, Assembly-CSharp
+      - m_Target: {fileID: 2798890668343484273}
+        m_TargetAssemblyTypeName: ButtonChat, Assembly-CSharp
         m_MethodName: ClickButtonChat
         m_Mode: 1
         m_Arguments:
@@ -3740,6 +3741,18 @@ MonoBehaviour:
   input: {fileID: 4964282158490276191}
   usernameInput: {fileID: 3851976809093283346}
   username: Default
+--- !u!114 &2798890668343484273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690289370813999761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad9b875ef1db4f3d95564d0e1a2bbdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   chatPanel: {fileID: 5818946039468997871}
 --- !u!1 &4731265092030937150
 GameObject:
