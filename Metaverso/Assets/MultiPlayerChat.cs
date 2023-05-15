@@ -21,6 +21,8 @@ public class MultiPlayerChat : NetworkBehaviour
         username = usernameInput.text;
     }
 
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
