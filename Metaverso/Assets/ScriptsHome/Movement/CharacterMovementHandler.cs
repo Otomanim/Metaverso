@@ -25,8 +25,10 @@ public class CharacterMovementHandler : NetworkBehaviour
     public bool shift { get; set; }
     [Networked]
     public bool interact { get; set; }
-    public bool isInteractive = false;
-    public bool isSit = false;
+    [Networked]
+    public bool isInteractive { get; set; }
+    [Networked]
+    public bool isSit { get; set; }
     public Vector3 rotacao;
     public Vector3 posicao;
     public int escolheAnimation;
@@ -40,6 +42,8 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isSit = false;
+        isInteractive = false;
         animator = GetComponent<NetworkMecanimAnimator>();
     }
 
@@ -123,11 +127,6 @@ public class CharacterMovementHandler : NetworkBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        
-        //isInteractive = false;
-    }
     void CheckFallRespawn()
     {
         if (transform.position.y < -12)
