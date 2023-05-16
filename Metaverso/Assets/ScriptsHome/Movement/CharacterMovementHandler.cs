@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.Video;
 
 public class CharacterMovementHandler : NetworkBehaviour
 {
     Vector2 viewInput;
-    VideoController controller;
+    VideoPlayer video;
     //Rotation
     float cameraRotationX = 0;
 
@@ -36,7 +37,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     private NetworkMecanimAnimator animator;
     private void Awake()
     {
-        
+        video = VideoPlayer.FindAnyObjectByType<VideoPlayer>();
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
     }
@@ -44,7 +45,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller = new VideoController();
+        
         isSit = false;
         isInteractive = false;
         animator = GetComponent<NetworkMecanimAnimator>();
@@ -54,8 +55,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     void Update()
     {
         float _distance = Vector3.Distance(TV.transform.position,networkCharacterControllerPrototypeCustom.transform.position) * -1.0f + 10.0f;
-        Debug.Log(_distance);
-        //controller.videoPlayer.SetDirectAudioVolume(0, _distance / 20.0f);
+        video.SetDirectAudioVolume(0, _distance / 20.0f);
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
