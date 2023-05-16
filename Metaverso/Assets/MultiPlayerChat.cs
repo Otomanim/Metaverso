@@ -8,14 +8,19 @@ using System;
 
 public class MultiPlayerChat : NetworkBehaviour
 {
-    public Text _message;
-    public Text input;
-    public TextMeshProUGUI usernameInput;
+    public TextMeshProUGUI _message;
+    public TMP_InputField input;
+    TextMeshProUGUI usernameInput;
     public string username = "Default";
 
     private void Start()
     {
+
+        //usernameInput.text = PlayerPrefs.GetString("PlayerNickname");
+        
         //username = usernameInput.text;
+        //Debug.Log(username);
+
     }
 
     public void CallMessageRPC()
