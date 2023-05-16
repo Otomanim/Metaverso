@@ -5954,9 +5954,6 @@ MonoBehaviour:
   rotationSpeed: 120
   viewUpDownRotationSpeed: 80
   _IsGrounded: 0
-  isInteractive: 0
-  isSit: 0
-  escolheAnimation: 0
   _Velocity: {x: 0, y: 0, z: 0}
   rotacao: {x: 0, y: 0, z: 0}
   posicao: {x: 0, y: 0, z: 0}
@@ -5979,10 +5976,11 @@ MonoBehaviour:
   _left: 0
   _shift: 0
   _interact: 0
-  isInteractive: 0
-  isSit: 0
+  _isInteractive: 0
+  _isSit: 0
   rotacao: {x: 0, y: 0, z: 0}
   posicao: {x: 0, y: 0, z: 0}
+  TV: {fileID: 7344503781261589261, guid: b32db38f24b7d8444b4571c166e0e796, type: 3}
   escolheAnimation: 0
 --- !u!114 &6443051413235322268
 MonoBehaviour:

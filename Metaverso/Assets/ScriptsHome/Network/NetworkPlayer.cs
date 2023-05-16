@@ -4,12 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Fusion;
+using UnityEngine.Video;
+using YoutubePlayer;
 
 public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 {
     public TextMeshProUGUI playerNickNameTM;
     public static NetworkPlayer Local { get; set; }
-
+    VideoControll video;
     public Transform playerModel;
 
     [Networked(OnChanged = nameof(OnNickNameChanged))]
@@ -18,13 +20,15 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
     // Start is called before the first frame update
     void Start()
     {
-
+        video = new VideoControll();
     }
 
     public override void Spawned()
     {
+        
         if (Object.HasInputAuthority)
         {
+            //video.playVideo1();
             Local = this;
 
             //Sets the layer of the local players model

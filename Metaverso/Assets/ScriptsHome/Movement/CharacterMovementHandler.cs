@@ -6,7 +6,7 @@ using Fusion;
 public class CharacterMovementHandler : NetworkBehaviour
 {
     Vector2 viewInput;
-
+    VideoController controller;
     //Rotation
     float cameraRotationX = 0;
 
@@ -31,10 +31,12 @@ public class CharacterMovementHandler : NetworkBehaviour
     public bool isSit { get; set; }
     public Vector3 rotacao;
     public Vector3 posicao;
+    public GameObject TV;
     public int escolheAnimation;
     private NetworkMecanimAnimator animator;
     private void Awake()
     {
+        
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
     }
@@ -42,6 +44,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controller = new VideoController();
         isSit = false;
         isInteractive = false;
         animator = GetComponent<NetworkMecanimAnimator>();
@@ -50,6 +53,9 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        float _distance = Vector3.Distance(TV.transform.position,networkCharacterControllerPrototypeCustom.transform.position) * -1.0f + 10.0f;
+        Debug.Log(_distance);
+        //controller.videoPlayer.SetDirectAudioVolume(0, _distance / 20.0f);
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
