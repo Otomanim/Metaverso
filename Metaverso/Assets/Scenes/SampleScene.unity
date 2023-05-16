@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.5748249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1979,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.047
+      value: 1.062
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3136,7 +3136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.047
+      value: 1.075
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4621,7 +4621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.047
+      value: 1.063
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4759,7 +4759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.047
+      value: 1.076
       objectReference: {fileID: 0}
     - target: {fileID: 1085552408309892449, guid: 8b1aac4c8978efa42b693df2561545bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12564,7 +12564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1863227924943084007
@@ -15396,7 +15396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1925, y: -1171.8815}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &2900009602651586977
@@ -24169,7 +24169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1085371517bb4f3e9f222b7b0e225a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatPanel: {fileID: 5909854821718189926}
+  _interpolationDataSource: 0
+  _message: {fileID: 0}
+  input: {fileID: 0}
+  usernameInput: {fileID: 0}
+  username: Default
 --- !u!4 &7128614578283424842
 Transform:
   m_ObjectHideFlags: 0
