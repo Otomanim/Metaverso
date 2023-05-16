@@ -8,45 +8,41 @@ using Fusion;
 using UnityEngine.Networking;
 using Unity.VisualScripting;
 
-public class WebView : MonoBehaviour
+public class AgendaWeb : MonoBehaviour
 {
     public GameObject gameObject;
     public Text status;
     WebViewObject webViewObject;
 
 
-    //private bool manual = false;
-    //public GameObject webView;
-    
+    private bool manual = false;
+    public GameObject webView;
 
-    private string Url = "https://trello.com/b/zmGOKH3K/manual-de-integra%C3%A7%C3%A3o";
 
-    //public void ManualIntegracao()
-    //{
-    //    manual = !manual;
+    private string Url = "https://workspace.google.com/products/calendar/?hl=pt-BR";
 
-    //    if (manual)
-    //    {
-    //        StartCoroutine(Start());
-    //        string url = "https://trello.com/b/zmGOKH3K/manual-de-integra%C3%A7%C3%A3o";
-    //        Url = url;
-    //        webView.SetActive(true);
-    //        Debug.Log("======= active Manual ========");
-            
-    //    }
-    //    else
-    //    {
-    //        webView.SetActive(false);
-    //        Debug.Log("======== inative Manual ==========");
-    //    }
-    //}
+    public void TappedAgenda()
+    {
+        manual = !manual;
+
+        if (manual)
+        {
+            webView.SetActive(true);
+            Debug.Log("======= active Agenda ========");
+        }
+        else
+        {
+            webView.SetActive(false);
+            Debug.Log("======== inative Agenda ==========");
+        }
+    }
 
 
 
     IEnumerator Start()
     {
         webViewObject = gameObject.AddComponent<WebViewObject>();
-        
+
 
         if (gameObject != isActiveAndEnabled)
         {
@@ -151,7 +147,7 @@ public class WebView : MonoBehaviour
             webViewObject.LoadURL(Url);
             webViewObject.SetMargins(0, 100, 0, 0);
             webViewObject.SetVisibility(true);
-            
+
 
             Debug.Log("=====Loading video=======");
 
@@ -287,7 +283,7 @@ public class WebView : MonoBehaviour
 
         //statusText.text = "Loading video...";
     }
-    
+
 
 
 
