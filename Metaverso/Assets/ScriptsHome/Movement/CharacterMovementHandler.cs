@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class CharacterMovementHandler : NetworkBehaviour
 {
     Vector2 viewInput;
-    VideoPlayer video;
+    //VideoPlayer video;
     //Rotation
     float cameraRotationX = 0;
 
@@ -37,7 +37,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     private NetworkMecanimAnimator animator;
     private void Awake()
     {
-        video = VideoPlayer.FindAnyObjectByType<VideoPlayer>();
+        //video = VideoPlayer.FindAnyObjectByType<VideoPlayer>();
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
     }
@@ -63,8 +63,7 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        float _distance = Vector3.Distance(TV.transform.position, networkCharacterControllerPrototypeCustom.transform.position) * -1.0f + 10.0f;
-        video.SetDirectAudioVolume(0, _distance / 20.0f);
+        
         //Get the input from the network
         if (GetInput(out NetworkInputData networkInputData))
         {
