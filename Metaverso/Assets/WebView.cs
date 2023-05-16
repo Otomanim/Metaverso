@@ -15,31 +15,28 @@ public class WebView : MonoBehaviour
     WebViewObject webViewObject;
 
 
-    //private bool manual = false;
-    //public GameObject webView;
+    private bool manual = false;
+    public GameObject webView;
     
 
     private string Url = "https://trello.com/b/zmGOKH3K/manual-de-integra%C3%A7%C3%A3o";
 
-    //public void ManualIntegracao()
-    //{
-    //    manual = !manual;
+    public void ManualIntegracao()
+    {
+        manual = !manual;
 
-    //    if (manual)
-    //    {
-    //        StartCoroutine(Start());
-    //        string url = "https://trello.com/b/zmGOKH3K/manual-de-integra%C3%A7%C3%A3o";
-    //        Url = url;
-    //        webView.SetActive(true);
-    //        Debug.Log("======= active Manual ========");
-            
-    //    }
-    //    else
-    //    {
-    //        webView.SetActive(false);
-    //        Debug.Log("======== inative Manual ==========");
-    //    }
-    //}
+        if (manual)
+        {
+            webView.SetActive(true);
+            Debug.Log("======= active Manual ========");
+
+        }
+        else
+        {
+            webView.SetActive(false);
+            Debug.Log("======== inative Manual ==========");
+        }
+    }
 
 
 
