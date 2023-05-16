@@ -54,8 +54,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        float _distance = Vector3.Distance(TV.transform.position,networkCharacterControllerPrototypeCustom.transform.position) * -1.0f + 10.0f;
-        video.SetDirectAudioVolume(0, _distance / 20.0f);
+        
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
@@ -64,6 +63,8 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        float _distance = Vector3.Distance(TV.transform.position, networkCharacterControllerPrototypeCustom.transform.position) * -1.0f + 10.0f;
+        video.SetDirectAudioVolume(0, _distance / 20.0f);
         //Get the input from the network
         if (GetInput(out NetworkInputData networkInputData))
         {
