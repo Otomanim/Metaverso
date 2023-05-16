@@ -20,6 +20,7 @@ public class WebView : NetworkBehaviour
     IEnumerator Start()
     {
         webViewObject = gameObject.AddComponent<WebViewObject>();
+        
 
         if (gameObject != isActiveAndEnabled)
         {
@@ -122,8 +123,9 @@ public class WebView : NetworkBehaviour
 
             //webViewObject.bitmapRefreshCycle = 1;
             webViewObject.LoadURL(Url);
-            webViewObject.SetMargins(0, 0, 0, 0);
+            webViewObject.SetMargins(0, 100, 0, 0);
             webViewObject.SetVisibility(true);
+            
 
             Debug.Log("=====Loading video=======");
 
