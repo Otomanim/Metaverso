@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using UnityEngine.Video;
+using Unity.VisualScripting;
 
 public class CharacterMovementHandler : NetworkBehaviour
 {
     Vector2 viewInput;
-    //VideoPlayer video;
+    VideoPlayer video;
     //Rotation
     float cameraRotationX = 0;
 
@@ -37,7 +38,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     private NetworkMecanimAnimator animator;
     private void Awake()
     {
-        //video = VideoPlayer.FindAnyObjectByType<VideoPlayer>();
+        video = VideoPlayer.FindAnyObjectByType<VideoPlayer>();
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
     }
@@ -67,7 +68,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         //Get the input from the network
         if (GetInput(out NetworkInputData networkInputData))
         {
-
+            video.SetDirectAudioVolume(0, networkInputData.distance / 20.0f);
 
             //Rotate the view
             if (!isSit)

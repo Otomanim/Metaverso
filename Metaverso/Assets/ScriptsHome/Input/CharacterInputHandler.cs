@@ -6,6 +6,8 @@ public class CharacterInputHandler : MonoBehaviour
 {
     Vector2 moveInputVector = Vector2.zero;
     Vector2 viewInputVector = Vector2.zero;
+    float distance;
+    public GameObject TV;
     bool isLeftHolding = false;
     bool isRightHolding = false;
     bool isFrontHolding = false;
@@ -31,6 +33,7 @@ public class CharacterInputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distance = Vector3.Distance(TV.transform.position, transform.position) * -1.0f + 10.0f;
         //View input
         viewInputVector.x = Input.GetAxis("Mouse X") * 1.5f;
         viewInputVector.y = (Input.GetAxis("Mouse Y") * 1.5f) * -1; //Invert the mouse look
@@ -102,6 +105,7 @@ public class CharacterInputHandler : MonoBehaviour
         //InteractKey data
         networkInputData.isInteractKeyPressed = isInteractKeyPressed;
 
+        networkInputData.distance = distance;
 
         //Reset variables now that we have read their states
         isFrontHolding = false;
