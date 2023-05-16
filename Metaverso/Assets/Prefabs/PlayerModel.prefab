@@ -2681,7 +2681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9109497fbd1e9bf4f8de7bc154607822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
+  _interpolationDataSource: 0
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 4217473154069842650}
   InterpolateErrorCorrection: 1
@@ -2699,9 +2699,9 @@ MonoBehaviour:
   TargetInterpolationDelay: 0.03
   gravity: -10
   jumpImpulse: 7
-  acceleration: 15
-  braking: 20
-  maxSpeed: 3
+  acceleration: 20
+  braking: 10
+  maxSpeed: 4
   rotationSpeed: 120
   viewUpDownRotationSpeed: 80
   _IsGrounded: 0
@@ -2724,17 +2724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  _front: 0
-  _back: 0
-  _right: 0
-  _left: 0
-  _shift: 0
-  _interact: 0
-  isInteractive: 0
-  isSit: 0
-  rotacao: {x: 0, y: 0, z: 0}
-  posicao: {x: 0, y: 0, z: 0}
-  escolheAnimation: 0
 --- !u!114 &6443051413235322268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2759,7 +2748,7 @@ MonoBehaviour:
   m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
+  _interpolationDataSource: 0
   Animator: {fileID: 4472937516481946423}
   TotalWords: 1
   SyncSettings: 79

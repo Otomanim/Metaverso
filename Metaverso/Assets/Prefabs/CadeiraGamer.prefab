@@ -523,7 +523,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1085552408309892449}
   - component: {fileID: -7610657074676771732}
-  - component: {fileID: 7102681339885677809}
   m_Layer: 0
   m_Name: CadeiraGamer
   m_TagString: cadeiraGamer
@@ -566,22 +565,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8886828, y: 1.958586, z: 1.8698269}
   m_Center: {x: -0.014333725, y: 0.9953028, z: -0.6255538}
---- !u!54 &7102681339885677809
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6929172500065703517}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &9216764920608116580
 GameObject:
   m_ObjectHideFlags: 0
