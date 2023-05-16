@@ -25,8 +25,10 @@ public class CharacterMovementHandler : NetworkBehaviour
     public bool shift { get; set; }
     [Networked]
     public bool interact { get; set; }
-    public bool isInteractive = false;
-    public bool isSit = false;
+    [Networked]
+    public bool isInteractive { get; set; }
+    [Networked]
+    public bool isSit { get; set; }
     public Vector3 rotacao;
     public Vector3 posicao;
     public int escolheAnimation;
@@ -40,6 +42,8 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isSit = false;
+        isInteractive = false;
         animator = GetComponent<NetworkMecanimAnimator>();
     }
 
@@ -78,18 +82,17 @@ public class CharacterMovementHandler : NetworkBehaviour
             if (networkInputData.isBackHolding)
                 back = true;
             else
-            back = false;
+                back = false;
 
             if (networkInputData.isRightHolding)
                 right = true;
             else
-            right = false;
-            
+                right = false;
+           
             if (networkInputData.isLeftHolding)
                 left = true;
-                
             else
-            left = false;
+                left = false;
             
             //Shift
             if (networkInputData.isShiftHolding)
@@ -124,11 +127,6 @@ public class CharacterMovementHandler : NetworkBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if(!isSit)
-        isInteractive = false;
-    }
     void CheckFallRespawn()
     {
         if (transform.position.y < -12)
@@ -203,8 +201,8 @@ public class CharacterMovementHandler : NetworkBehaviour
         else
             EscolheAnimation(4);
     }
-    
-    private void OnTriggerStay(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("escada"))
         {
@@ -231,6 +229,11 @@ public class CharacterMovementHandler : NetworkBehaviour
             rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
             escolheAnimation = 3;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isInteractive = false;
     }
     
     
