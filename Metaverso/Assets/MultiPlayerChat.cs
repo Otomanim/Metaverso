@@ -15,7 +15,7 @@ public class MultiPlayerChat : NetworkBehaviour
 
     private void Start()
     {
-        username = usernameInput.text;
+        //username = usernameInput.text;
     }
 
     public void CallMessageRPC()
