@@ -68,7 +68,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         //Get the input from the network
         if (GetInput(out NetworkInputData networkInputData))
         {
-            video.SetDirectAudioVolume(0, networkInputData.distance / 20.0f);
+            networkCharacterControllerPrototypeCustom.DistanciaAudio(video, networkInputData.distance);
 
             //Rotate the view
             if (!isSit)

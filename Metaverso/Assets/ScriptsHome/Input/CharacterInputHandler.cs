@@ -34,6 +34,7 @@ public class CharacterInputHandler : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(TV.transform.position, transform.position) * -1.0f + 10.0f;
+        
         //View input
         viewInputVector.x = Input.GetAxis("Mouse X") * 1.5f;
         viewInputVector.y = (Input.GetAxis("Mouse Y") * 1.5f) * -1; //Invert the mouse look
