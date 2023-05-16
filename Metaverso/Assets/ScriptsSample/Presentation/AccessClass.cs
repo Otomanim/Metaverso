@@ -1,19 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AccessClass : MonoBehaviour
 {
-    void Update()
+    private bool collidedWithMonitor = false;
+    private Renderer objectRenderer;
+
+    public Material telaTreinamentoMaterial;
+    public Material pretoMaterial;
+
+    private void Start()
     {
-        
+        objectRenderer = GetComponent<Renderer>();
     }
 
-    private void OnTriggerEnter() {
-        if(Input.GetKeyDown(KeyCode.Return)){
+    private void OnTriggerEnter(Collider other)
+    {
+        collidedWithMonitor = true;
+        ChangeMaterial(telaTreinamentoMaterial);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        collidedWithMonitor = false;
+        ChangeMaterial(pretoMaterial);
+    }
+
+    private void Update()
+    {
+        if (collidedWithMonitor && Input.GetKeyDown(KeyCode.Return))
+        {
             SceneManager.LoadScene("Class");
-            Debug.Log("Pressionou Enter");
         }
+    }
+
+    private void ChangeMaterial(Material material)
+    {
+        objectRenderer.material = material;
     }
 }

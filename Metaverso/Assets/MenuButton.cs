@@ -11,15 +11,8 @@ public class MenuButton : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            ClickButton();
-
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("===== click ======");
-        }
+        
+        
     }
     public void ClickButton()
     {
@@ -28,12 +21,12 @@ public class MenuButton : MonoBehaviour
         if (painel)
         {
             menu.SetActive(true);
-            Debug.Log("======= active========");
+            Debug.Log("======= active Menu ========");
         }
         else
         {
             menu.SetActive(false);
-            Debug.Log("======== inative==========");
+            Debug.Log("======== inative Menu ==========");
         }
     }
 }
