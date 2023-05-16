@@ -8,6 +8,7 @@ TagManager:
   - cadeiraJardim
   - cadeiraGamer
   - Puff
+  - Monitor
   layers:
   - Default
   - TransparentFX
