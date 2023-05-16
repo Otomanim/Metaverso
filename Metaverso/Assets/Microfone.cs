@@ -11,7 +11,7 @@ public class Microfone : MonoBehaviour
 
     private void Start()
     {
-        audioSource = speaker.GetComponent<AudioSource>();
+        //audioSource = speaker.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -19,24 +19,24 @@ public class Microfone : MonoBehaviour
         
     }
 
-    public void ClickButton()
-    {
-        isMuted = !isMuted;
-        if (isMuted)
-        {
-            Debug.Log("mute on");
-            audioSource.mute = true;
-            //microfone.GetComponents<IMa>
+    //public void ClickButton()
+    //{
+    //    isMuted = !isMuted;
+    //    if (isMuted)
+    //    {
+    //        Debug.Log("mute on");
+    //        audioSource.mute = true;
+    //        //microfone.GetComponents<IMa>
 
-        }
-        else
-        {
-            Debug.Log("mute off");
-            audioSource.mute = false;
-            //audioSource.clip = Microphone.Start(null, true, 10, AudioSettings.outputSampleRate);
-            //audioSource.loop = true;
-            //while (!(Microphone.GetPosition(null) > 0)) { }
-            //audioSource.Play();
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("mute off");
+    //        audioSource.mute = false;
+    //        //audioSource.clip = Microphone.Start(null, true, 10, AudioSettings.outputSampleRate);
+    //        //audioSource.loop = true;
+    //        //while (!(Microphone.GetPosition(null) > 0)) { }
+    //        //audioSource.Play();
+    //    }
+    //}
 }

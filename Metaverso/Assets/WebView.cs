@@ -11,7 +11,6 @@ public class WebView : NetworkBehaviour
 {
     public GameObject gameObject;
     public Text status;
-    public Texture2D texture2D;
     WebViewObject webViewObject;
 
 
