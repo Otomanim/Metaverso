@@ -8,7 +8,7 @@ using Fusion;
 using UnityEngine.Networking;
 using Unity.VisualScripting;
 
-public class WebView : MonoBehaviour
+public class AgendaWeb : MonoBehaviour
 {
     public GameObject gameObject;
     public Text status;
@@ -17,24 +17,23 @@ public class WebView : MonoBehaviour
 
     private bool manual = false;
     public GameObject webView;
-    
 
-    private string Url = "https://trello.com/b/zmGOKH3K/manual-de-integra%C3%A7%C3%A3o";
 
-    public void ManualIntegracao()
+    private string Url = "https://workspace.google.com/products/calendar/?hl=pt-BR";
+
+    public void TappedAgenda()
     {
         manual = !manual;
 
         if (manual)
         {
             webView.SetActive(true);
-            Debug.Log("======= active Manual ========");
-
+            Debug.Log("======= active Agenda ========");
         }
         else
         {
             webView.SetActive(false);
-            Debug.Log("======== inative Manual ==========");
+            Debug.Log("======== inative Agenda ==========");
         }
     }
 
@@ -43,7 +42,7 @@ public class WebView : MonoBehaviour
     IEnumerator Start()
     {
         webViewObject = gameObject.AddComponent<WebViewObject>();
-        
+
 
         if (gameObject != isActiveAndEnabled)
         {
@@ -148,7 +147,7 @@ public class WebView : MonoBehaviour
             webViewObject.LoadURL(Url);
             webViewObject.SetMargins(0, 100, 0, 0);
             webViewObject.SetVisibility(true);
-            
+
 
             Debug.Log("=====Loading video=======");
 
@@ -284,7 +283,7 @@ public class WebView : MonoBehaviour
 
         //statusText.text = "Loading video...";
     }
-    
+
 
 
 
