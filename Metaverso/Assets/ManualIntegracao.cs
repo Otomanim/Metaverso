@@ -4,27 +4,15 @@ using UnityEngine;
 
 public class ManualIntegracao : MonoBehaviour
 {
-    public GameObject manualIntegracao;
-    private bool manual = false;
-
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-
-
+        
     }
-    public void ClickButton()
-    {
-        manual = !manual;
 
-        if (manual)
-        {
-            manualIntegracao.SetActive(true);
-            Debug.Log("======= active Menu ========");
-        }
-        else
-        {
-            manualIntegracao.SetActive(false);
-            Debug.Log("======== inative Menu ==========");
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
