@@ -11,7 +11,8 @@ public class AccessClass : MonoBehaviour
 
     private void Start()
     {
-        objectRenderer = GetComponent<Renderer>();
+        objectRenderer = GetComponent<Renderer>();        
+        ChangeMaterial(pretoMaterial);
     }
 
     private void OnTriggerEnter(Collider other)

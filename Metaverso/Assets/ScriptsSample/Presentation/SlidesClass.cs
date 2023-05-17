@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SlidesClass : MonoBehaviour
 {
@@ -7,6 +6,9 @@ public class SlidesClass : MonoBehaviour
     public Renderer telaInicial;
     private int indiceMaterialAtual = 0;
     private int indiceMaterialAnterior = 0;
+    private bool isPlayerInsideTrigger = false;
+    public Camera fullScreen;
+    private bool isFullScreenActive = false;
 
     private void Start()
     {
@@ -18,14 +20,53 @@ public class SlidesClass : MonoBehaviour
         AtualizarMaterial();
     }
 
+    private void Update()
+    {
+        if (isPlayerInsideTrigger)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                ToggleFullScreen();
+            }
+            else if (Input.GetKeyDown(KeyCode.P))
+            {
+                TrocarProximoMaterial();
+            }
+            else if (Input.GetKeyDown(KeyCode.O))
+            {
+                TrocarMaterialAnterior();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInsideTrigger = true;
+            telaInicial.material = materiais[1];
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInsideTrigger = false;
+            telaInicial.material = materiais[0];
+        }
+    }
+
+    private void ToggleFullScreen()
+    {
+        isFullScreenActive = !isFullScreenActive;
+        fullScreen.gameObject.SetActive(isFullScreenActive);
+    }
+
     public void TrocarProximoMaterial()
     {
         indiceMaterialAnterior = indiceMaterialAtual;
-        indiceMaterialAtual++;
-        if (indiceMaterialAtual >= materiais.Length)
-        {
-            indiceMaterialAtual = 0;
-        }
+        indiceMaterialAtual = (indiceMaterialAtual + 1) % materiais.Length;
 
         AtualizarMaterial();
     }
@@ -33,11 +74,7 @@ public class SlidesClass : MonoBehaviour
     public void TrocarMaterialAnterior()
     {
         indiceMaterialAnterior = indiceMaterialAtual;
-        indiceMaterialAtual--;
-        if (indiceMaterialAtual < 0)
-        {
-            indiceMaterialAtual = materiais.Length - 1;
-        }
+        indiceMaterialAtual = (indiceMaterialAtual - 1 + materiais.Length) % materiais.Length;
 
         AtualizarMaterial();
     }

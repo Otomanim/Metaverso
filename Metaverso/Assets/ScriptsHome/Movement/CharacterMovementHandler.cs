@@ -225,7 +225,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         if (other.gameObject.CompareTag("cadeiraGamer"))
         {
             isInteractive = true;
-            posicao = new Vector3(other.transform.localPosition.x, other.transform.localPosition.y, other.transform.localPosition.z);
+            posicao = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
             rotacao = new Vector3(other.transform.eulerAngles.x, other.transform.eulerAngles.y, other.transform.eulerAngles.z);
             escolheAnimation = 2;
         }
