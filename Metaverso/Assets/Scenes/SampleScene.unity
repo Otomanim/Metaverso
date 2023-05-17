@@ -7436,6 +7436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tv
       objectReference: {fileID: 0}
+    - target: {fileID: 7344503781261589261, guid: b32db38f24b7d8444b4571c166e0e796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b32db38f24b7d8444b4571c166e0e796, type: 3}
 --- !u!4 &1583209932 stripped
@@ -14114,7 +14118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2101014460527047985
 GameObject:
   m_ObjectHideFlags: 0
@@ -14132,7 +14136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &2103641277051204242
 Light:
   m_ObjectHideFlags: 0
@@ -14469,7 +14473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2226362850067092602
 GameObject:
   m_ObjectHideFlags: 0
@@ -19380,7 +19384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4430935649565033562
 Transform:
   m_ObjectHideFlags: 0
@@ -25697,7 +25701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6999858786983371871
 Transform:
   m_ObjectHideFlags: 0
@@ -29286,7 +29290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &8694854896174041136
 MeshCollider:
   m_ObjectHideFlags: 0
