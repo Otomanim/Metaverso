@@ -14,9 +14,9 @@ using UnityEngine.Video;
 namespace YoutubePlayer
 
 {
-    // https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D
+ // https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D
 
-    public class VideoControll : MonoBehaviour
+ public class VideoControll : MonoBehaviour
     {
     //public GameObject player;
     public YoutubePlayer youtubePlayer;
