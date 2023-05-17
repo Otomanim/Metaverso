@@ -14,11 +14,9 @@ using UnityEngine.Video;
 namespace YoutubePlayer
 
 {
-
     // https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D
 
     public class VideoControll : MonoBehaviour
-
     {
     //public GameObject player;
     public YoutubePlayer youtubePlayer;
@@ -32,7 +30,6 @@ namespace YoutubePlayer
     private bool canPlay = false;
     private bool isPlaying = true;
 
-
         private void Awake()
         {
             videoPlayer.url = "";
@@ -42,79 +39,47 @@ namespace YoutubePlayer
         }
 
         void Start()
-
         {
             //youtubeVideoLinks = new List<string>();
             //addButton.onClick.AddListener(TaskOnClick);
         }
 
-   
-
-
-
-
         void VideoPlayerPreparedCompleted(VideoPlayer source)
-
         {
-
             print(source.isPrepared);
-
             videoPlayer.Play();
-
             canPlay = true;
-
         }
 
 
 
 
         private async void Prepare()
-
         {
-
             print("Carregando video");
-
             try
             {
-
                 await youtubePlayer.PrepareVideoAsync();
-
             }
             catch
-
             {
-
                 print("ERRO");
-
             }
-
         }
 
         public void Play()
         {
-
             if (isPlaying == false)
-
             {
-
                 videoPlayer.Play();
-
-                isPlaying = true;
-
+               isPlaying = true;
             }
-
-
 
             else
-
             {
-
                 videoPlayer.Pause();
-
                 isPlaying = false;
-
             }
-
         }
 
         public void Stop()
@@ -124,7 +89,7 @@ namespace YoutubePlayer
 
         public void playVideoWithURL(string link)
         {
-            youtubePlayer.youtubeUrl = link;
+           youtubePlayer.youtubeUrl = link;
             Prepare();
         }
 

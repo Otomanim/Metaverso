@@ -194,7 +194,6 @@ GameObject:
   - component: {fileID: 7951890853902934871}
   - component: {fileID: 7111031188182245799}
   - component: {fileID: 1661110240171201932}
-  - component: {fileID: 6394502772084459841}
   - component: {fileID: 1055906038666526837}
   - component: {fileID: 1084698885170030727}
   m_Layer: 0
@@ -350,20 +349,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6394502772084459841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681420905960456210}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb219ba343d64c49a587b35fe94f44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  videoPlayer: {fileID: 0}
-  centro: {fileID: 7344503781261589261}
 --- !u!114 &1055906038666526837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7326ae984b28bbe428b3fa91a69a231d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   youtubePlayer: {fileID: 1084698885170030727}
   videoPlayer: {fileID: 7111031188182245799}
   fullScreenKey: 103
