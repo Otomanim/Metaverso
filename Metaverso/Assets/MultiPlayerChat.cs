@@ -12,14 +12,16 @@ public class MultiPlayerChat : NetworkBehaviour
     public Text input;
     TextMeshProUGUI usernameInput;
     public string username = "Default";
+    string user; 
 
     private void Start()
     {
+        user = PlayerPrefs.GetString("PlayerNickname");
+        username = user;
+        Debug.Log(user);
 
-        //username = PlayerPrefs.GetString("user_name");
-        
         //username = usernameInput.text;
-        Debug.Log(username+"============");
+        Debug.Log(username);
 
     }
 
