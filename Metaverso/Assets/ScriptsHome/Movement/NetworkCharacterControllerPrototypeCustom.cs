@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using Fusion;
 using UnityEngine;
+using UnityEngine.Video;
 
 [RequireComponent(typeof(CharacterController))]
 [OrderBefore(typeof(NetworkTransform))]
@@ -148,5 +149,7 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
     {     
          transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
     }
+
+    
 
 }

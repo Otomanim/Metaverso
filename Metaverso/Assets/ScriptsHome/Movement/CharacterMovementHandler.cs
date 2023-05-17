@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.Video;
+using Unity.VisualScripting;
 
 public class CharacterMovementHandler : NetworkBehaviour
 {
     Vector2 viewInput;
-
+    
     //Rotation
     float cameraRotationX = 0;
 
@@ -31,10 +33,12 @@ public class CharacterMovementHandler : NetworkBehaviour
     public bool isSit { get; set; }
     public Vector3 rotacao;
     public Vector3 posicao;
+    public GameObject TV;
     public int escolheAnimation;
     private NetworkMecanimAnimator animator;
     private void Awake()
     {
+        
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
     }
@@ -42,6 +46,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         isSit = false;
         isInteractive = false;
         animator = GetComponent<NetworkMecanimAnimator>();
@@ -50,6 +55,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -90, 90);
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
@@ -58,10 +64,11 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        
         //Get the input from the network
         if (GetInput(out NetworkInputData networkInputData))
         {
-
+            
 
             //Rotate the view
             if (!isSit)
