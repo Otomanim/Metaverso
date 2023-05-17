@@ -8,8 +8,8 @@ using System;
 
 public class MultiPlayerChat : NetworkBehaviour
 {
-    public TextMeshProUGUI _message;
-    public TMP_InputField input;
+    public Text _message;
+    public Text input;
     TextMeshProUGUI usernameInput;
     public string username = "Default";
 
