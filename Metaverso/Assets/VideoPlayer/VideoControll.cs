@@ -1,67 +1,154 @@
 using System.Collections;
+
 using System.Collections.Generic;
+
 using UnityEngine;
+
 using UnityEngine.UI;
+
 using UnityEngine.Video;
+
+
+
+
 namespace YoutubePlayer
-{ 
-    public class VideoControll : MonoBehaviour
+
+{
+
+    // https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D
+
+    public class VideoControll : MonoBehaviour
+
     {
-        public YoutubePlayer youtubePlayer;
-        VideoPlayer videoPlayer;
+    //public GameObject player;
+    public YoutubePlayer youtubePlayer;
+    public VideoPlayer videoPlayer;
+    public KeyCode fullScreenKey = KeyCode.G;
+    //private bool isFullScreenNotActive = true;
+    public InputField searchBar;
+    public Button addButton;
+    //private List<string> youtubeVideoLinks;
+    //private int videoCount = 0;
+    private bool canPlay = false;
+    private bool isPlaying = true;
+
 
         private void Awake()
         {
-            videoPlayer = GetComponent<VideoPlayer>();
+            videoPlayer.url = "";
+            youtubePlayer.youtubeUrl = "https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D";
+            videoPlayer = youtubePlayer.GetComponent<VideoPlayer>();
             videoPlayer.prepareCompleted += VideoPlayerPreparedCompleted;
         }
-        public void VideoPlayerPreparedCompleted(VideoPlayer source)
+
+        void Start()
+
         {
-            
+            //youtubeVideoLinks = new List<string>();
+            //addButton.onClick.AddListener(TaskOnClick);
         }
 
-        public async void Prepare()
+   
+
+
+
+
+        void VideoPlayerPreparedCompleted(VideoPlayer source)
+
         {
-            print("carregando video..");
+
+            print(source.isPrepared);
+
+            videoPlayer.Play();
+
+            canPlay = true;
+
+        }
+
+
+
+
+        private async void Prepare()
+
+        {
+
+            print("Carregando video");
+
             try
             {
+
                 await youtubePlayer.PrepareVideoAsync();
-                print("video carregado");
-                videoPlayer.Play();
+
             }
             catch
+
             {
-                print("ERROR video não carregado");
+
+                print("ERRO");
+
             }
+
         }
 
-        public void PlayVideo()
+        public void Play()
         {
-            videoPlayer.Play();
+
+            if (isPlaying == false)
+
+            {
+
+                videoPlayer.Play();
+
+                isPlaying = true;
+
+            }
+
+
+
+            else
+
+            {
+
+                videoPlayer.Pause();
+
+                isPlaying = false;
+
+            }
+
         }
 
-        public void PauseVideo()
-        {
-            videoPlayer.Pause();
-        }
-
-        public void ResetVideo()
+        public void Stop()
         {
             videoPlayer.Stop();
-            videoPlayer.Play();
         }
 
-        public void playVideo1()
+        public void playVideoWithURL(string link)
         {
-            videoPlayer.Stop();
-            string ytUrl = "https://www.youtube.com/watch?v=aX5Vy04SkY8";
-            videoPlayer.GetComponent<YoutubePlayer>().youtubeUrl = ytUrl;
+            youtubePlayer.youtubeUrl = link;
             Prepare();
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             videoPlayer.prepareCompleted -= VideoPlayerPreparedCompleted;
         }
-    }   
+
+        public bool getIsPlaying()
+        {
+            return isPlaying;
+        }
+
+        public bool getCanPlay()
+        {
+            return canPlay;
+        }
+
+    }
+
+
+
+
+
+
+
 }

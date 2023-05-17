@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 public class CharacterMovementHandler : NetworkBehaviour
 {
     Vector2 viewInput;
-    VideoPlayer video;
+    
     //Rotation
     float cameraRotationX = 0;
 
@@ -38,7 +38,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     private NetworkMecanimAnimator animator;
     private void Awake()
     {
-        video = VideoPlayer.FindAnyObjectByType<VideoPlayer>();
+        
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
     }
@@ -68,7 +68,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         //Get the input from the network
         if (GetInput(out NetworkInputData networkInputData))
         {
-            networkCharacterControllerPrototypeCustom.DistanciaAudio(video, networkInputData.distance);
+            
 
             //Rotate the view
             if (!isSit)

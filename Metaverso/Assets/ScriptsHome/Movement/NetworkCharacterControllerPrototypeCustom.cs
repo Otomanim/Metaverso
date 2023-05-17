@@ -150,9 +150,6 @@ public class NetworkCharacterControllerPrototypeCustom : NetworkTransform
          transform.Rotate(0, rotationY * Runner.DeltaTime * rotationSpeed, 0);
     }
 
-    public void DistanciaAudio(VideoPlayer video,float distancia)
-    {
-        video.SetDirectAudioVolume(0, distancia / 20.0f);
-    }
+    
 
 }
