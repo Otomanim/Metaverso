@@ -16,7 +16,7 @@ public class MultiPlayerChat : NetworkBehaviour
     private void Start()
     {
 
-        username = PlayerPrefs.GetString("user_name");
+        //username = PlayerPrefs.GetString("user_name");
         
         //username = usernameInput.text;
         Debug.Log(username+"============");
