@@ -2339,15 +2339,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556108012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0.03, y: 0, z: 0}
+  m_LocalScale: {x: 0.019980859, y: 0.019934898, z: 1.0151}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 881511551}
   m_Father: {fileID: 7322221541389348808}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!64 &556108014
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2382,7 +2382,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5420aa2ff693142538a2b6acac559e33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4137,9 +4137,9 @@ VideoPlayer:
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialRenderer: {fileID: 556108015}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
+  m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
   m_PlaybackSpeed: 1
@@ -4152,7 +4152,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -4185,7 +4185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3768fe280903842fdaa2a016022624f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  youtubeUrl: 
+  youtubeUrl: https://www.youtube.com/watch?v=q_xHcG06wys
   is360Video: 0
   cli: 1
 --- !u!1 &963194225
@@ -10126,7 +10126,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b0ceaa1cb64974167bb0ff189611ba04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26385,7 +26385,7 @@ VideoPlayer:
   - {fileID: 1661110239404410951}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://rr1---sn-b8u-co0e.googlevideo.com/videoplayback?expire=1684468316&ei=_J1mZPO5OcO0wQTdgphY&ip=2804%3A7f5%3Ad080%3A8378%3A64d1%3A8d79%3A94a8%3A6a02&id=o-AKpRDWJqhk_QoY1KuwwI6-GC7ScaZK1uI81ZGfUc9D_C&itag=22&source=youtube&requiressl=yes&mh=UI&mm=31%2C29&mn=sn-b8u-co0e%2Csn-bg0eznsy&ms=au%2Crdu&mv=m&mvi=1&pl=52&initcwndbps=845000&spc=qEK7By4gwp0vd1C0fb7xaV-1OXQDgEo&vprv=1&svpuc=1&mime=video%2Fmp4&cnr=14&ratebypass=yes&dur=130.124&lmt=1674669362969618&mt=1684446311&fvip=5&fexp=24007246%2C24363393&c=ANDROID&txp=6218224&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRgIhANY_3o325dGCORbLRknU-jHFOZrYU6RN02AmId-cWSQXAiEAqSdZrMznIpshR4u93iS-CPiugMNncSvmFL8OAYuoLuI%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRAIgFlQaYocbP-VcyTT6GWKs5zZ4kNWn5ivP0X4nYf6xEswCIHOpe4S1Ju8CKt6mOttmjgsJi7asmX9W-1uXd_XZEsSb
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
