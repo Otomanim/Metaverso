@@ -145,7 +145,7 @@ public class AgendaWeb : MonoBehaviour
 
             //webViewObject.bitmapRefreshCycle = 1;
             webViewObject.LoadURL(Url);
-            webViewObject.SetMargins(0, 100, 0, 0);
+            webViewObject.SetMargins(0, 200, 0, 0);
             webViewObject.SetVisibility(true);
 
 
