@@ -19,8 +19,10 @@ namespace YoutubePlayer
  public class VideoControll : MonoBehaviour
     {
     //public GameObject player;
-    public YoutubePlayer youtubePlayer;
-    public VideoPlayer videoPlayer;
+    public YoutubePlayer youtubePlayerRecepcao;
+    public YoutubePlayer youtubePlayerAuditorio;
+    public VideoPlayer videoPlayerRecepcao;
+    public VideoPlayer videoPlayerAuditorio;
     public KeyCode fullScreenKey = KeyCode.G;
     //private bool isFullScreenNotActive = true;
     public InputField searchBar;
@@ -32,10 +34,10 @@ namespace YoutubePlayer
 
         private void Awake()
         {
-            videoPlayer.url = "";
-            youtubePlayer.youtubeUrl = "https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D";
-            videoPlayer = youtubePlayer.GetComponent<VideoPlayer>();
-            videoPlayer.prepareCompleted += VideoPlayerPreparedCompleted;
+            videoPlayerRecepcao.url = "";
+            youtubePlayerRecepcao.youtubeUrl = "https://www.youtube.com/watch?v=aX5Vy04SkY8&pp=ygUIZm91cnN5c10%3D";
+            videoPlayerRecepcao = youtubePlayerRecepcao.GetComponent<VideoPlayer>();
+            videoPlayerRecepcao.prepareCompleted += VideoPlayerPreparedCompleted;
         }
 
         void Start()
@@ -47,19 +49,56 @@ namespace YoutubePlayer
         void VideoPlayerPreparedCompleted(VideoPlayer source)
         {
             print(source.isPrepared);
-            videoPlayer.Play();
+            videoPlayerRecepcao.Play();
             canPlay = true;
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                videoPlayerAuditorio.Play();
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                videoPlayerAuditorio.Pause();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                videoPlayerAuditorioPrepare();
+            }
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                videoPlayerAuditorio.Stop();
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                videoPlayerAuditorio.StepForward();
+            }
+        }
+        public async void videoPlayerAuditorioPrepare()
+        {
+            print("carregando video..");
 
+            try
+            {
+                await youtubePlayerAuditorio.PrepareVideoAsync();
 
+                print("video carregado");
+            }
+            catch
+            {
+                print("ERROR video não carregado");
+            }
+        }
 
         private async void Prepare()
         {
             print("Carregando video");
             try
             {
-                await youtubePlayer.PrepareVideoAsync();
+                await youtubePlayerRecepcao.PrepareVideoAsync();
             }
             catch
             {
@@ -71,31 +110,31 @@ namespace YoutubePlayer
         {
             if (isPlaying == false)
             {
-                videoPlayer.Play();
+                videoPlayerRecepcao.Play();
                isPlaying = true;
             }
 
             else
             {
-                videoPlayer.Pause();
+                videoPlayerRecepcao.Pause();
                 isPlaying = false;
             }
         }
 
         public void Stop()
         {
-            videoPlayer.Stop();
+            videoPlayerRecepcao.Stop();
         }
 
         public void playVideoWithURL(string link)
         {
-           youtubePlayer.youtubeUrl = link;
+            youtubePlayerRecepcao.youtubeUrl = link;
             Prepare();
         }
 
         private void OnDestroy()
         {
-            videoPlayer.prepareCompleted -= VideoPlayerPreparedCompleted;
+            videoPlayerRecepcao.prepareCompleted -= VideoPlayerPreparedCompleted;
         }
 
         public bool getIsPlaying()
