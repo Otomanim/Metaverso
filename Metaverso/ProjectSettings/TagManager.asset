@@ -9,6 +9,7 @@ TagManager:
   - cadeiraGamer
   - Puff
   - Monitor
+  - recepcao
   layers:
   - Default
   - TransparentFX
