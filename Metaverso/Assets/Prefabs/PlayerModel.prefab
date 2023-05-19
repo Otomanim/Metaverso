@@ -298,6 +298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4512517609049320398}
+  - component: {fileID: 6776980781958051746}
   m_Layer: 0
   m_Name: mixamorig:Head
   m_TagString: Untagged
@@ -321,6 +322,14 @@ Transform:
   m_Father: {fileID: 3825228332948308660}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &6776980781958051746
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594154974454439362}
+  m_Enabled: 1
 --- !u!1 &669294763262016262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1022,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1811430155864152587}
   - component: {fileID: 6823888548319973673}
-  - component: {fileID: 8009485708167922173}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Player
@@ -1081,14 +1089,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8009485708167922173
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827362302872530810}
-  m_Enabled: 1
 --- !u!1 &2912125285930019482
 GameObject:
   m_ObjectHideFlags: 0
