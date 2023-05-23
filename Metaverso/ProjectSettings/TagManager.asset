@@ -10,6 +10,13 @@ TagManager:
   - Puff
   - Monitor
   - recepcao
+  - Auditorio
+  - Recepcao
+  - Jardim
+  - Treinamento
+  - Onboard
+  - Cafe
+  - Descompressao
   layers:
   - Default
   - TransparentFX
