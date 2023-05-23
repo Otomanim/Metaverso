@@ -54,6 +54,12 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Cafe");
         }
 
+        if (audioZone == "Descompressao")
+        {
+            audioMixer.SetFloat(audioZone, 0);
+            Debug.Log("Descompressao");
+        }
+
         if (audioZone == "Jardim")
         {
             audioMixer.SetFloat(audioZone, 0);
