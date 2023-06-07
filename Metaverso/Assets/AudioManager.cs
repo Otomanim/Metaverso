@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using Photon.Voice.Unity;
 
 public class AudioManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class AudioManager : MonoBehaviour
     private string audioZone; // A zona de áudio atual
 
     private float sliderVol;
+
+    private VoiceConnection voiceConnection;
+
+    private Recorder recorder;
 
     private void Awake()
     {
@@ -34,7 +39,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-
+        
         //Debug.Log(slider.value);
     }
 
@@ -45,6 +50,8 @@ public class AudioManager : MonoBehaviour
         if (audioZone == "Auditorio")
         {
             audioMixer.SetFloat(audioZone, 0);
+            //recorder.InterestGroup = 1;
+            voiceConnection.Client.OpChangeGroups(0, 1);
             Debug.Log("Auditorio");
         }
 
@@ -75,6 +82,7 @@ public class AudioManager : MonoBehaviour
         if (audioZone == "Recepcao")
         {
             audioMixer.SetFloat(audioZone, -10);
+            recorder.InterestGroup = 2;
             Debug.Log("Recepcao");
         }
 
@@ -100,4 +108,6 @@ public class AudioManager : MonoBehaviour
         sliderVol = vol;
         audioMixer.SetFloat("Master", sliderVol);
     }
+
+    
 }
