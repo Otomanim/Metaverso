@@ -14,9 +14,9 @@ TagManager:
   - Recepcao
   - Jardim
   - Treinamento
-  - Onboard
   - Cafe
   - Descompressao
+  - Onboarding
   layers:
   - Default
   - TransparentFX
